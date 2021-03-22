@@ -233,18 +233,17 @@
 // console.log(copy);
 // console.log(obj);
 
-// Создние поверхностной копии на первом (верхнем) уровне объекта:
-
-const obj = {
-  a: 5,
-  b: 1,
-  c: {
-    x: 7,
-    y: 4,
-  }
-};
+// !!!Создние поверхностной копии на первом (верхнем) уровне объекта:
 
 // 1. С помощью цикла
+// const obj = {
+//   a: 5,
+//   b: 1,
+//   c: {
+//     x: 7,
+//     y: 4,
+//   }
+// };
 
 // function copy(oldObj) {
 //   let newObj = {};
@@ -264,15 +263,72 @@ const obj = {
 // console.log(newObj);
 
 // 2. С помощью Object.assign(obj1, obj2)
-const add = {
-	d: 66,
-	e: 99
+// const obj = {
+//   a: 5,
+//   b: 1,
+//   c: {
+//     x: 7,
+//     y: 4,
+//   }
+// };
+
+// const add = {
+// 	d: 66,
+// 	e: 99
+// };
+
+// // const newObj = Object.assign(obj, add);
+// // console.log(newObj);
+
+// const newObj2 = Object.assign({}, add);
+// newObj2.d = 100;
+// console.log(add);
+// // console.log(newObj2);
+
+// 3. С помощью оператора slice для массива []
+// const oldArr = ['a', 'b', 'c'];
+// const newArr = oldArr.slice();
+
+// newArr[0] = 'x';
+
+// console.log(oldArr);
+// console.log(newArr);
+
+// 4. С помощью оператора Sread (развернуть структуру на отдельные элементы)
+// 4.1 Для массивов []
+const oldArr = ['a', 'b', 'c'];
+const newArr = [...oldArr];
+
+newArr[0] = 'u';
+
+console.log(...oldArr);
+console.log(oldArr);
+console.log(newArr);
+
+// Spread массива в аргументы функции
+function logger(a, b, c) {
+	console.log(a);
+	console.log(b);
+	console.log(c);
+}
+
+const num = [1, 2, 3];
+
+logger(...num);
+
+// 4.2 Для объектов {}
+const obj = {
+  a: 5,
+  b: 1,
+  c: {
+    x: 7,
+    y: 4,
+  }
 };
 
-// const newObj = Object.assign(obj, add);
-// console.log(newObj);
+const newObj = {...obj};
 
-const newObj2 = Object.assign({}, add);
-newObj2.d = 100;
-console.log(add);
-console.log(newObj2);
+newObj.a = 222;
+
+console.log(obj);
+console.log(newObj);
