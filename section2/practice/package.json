@@ -1,0 +1,33 @@
+{
+  "name": "gulp-start-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmitriy Petukhov",
+  "license": "ISC",
+  "devDependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "animate.css": "^4.1.0",
+    "baguettebox.js": "^1.11.1",
+    "browser-sync": "^2.26.13",
+    "fullpage.js": "^3.0.9",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify-es": "^2.0.0",
+    "ion-rangeslider": "^2.3.1",
+    "jquery": "^3.5.1",
+    "magnific-popup": "^1.1.0",
+    "mixitup": "^3.3.1",
+    "normalize.css": "^8.0.1",
+    "rateyo": "^2.3.5",
+    "slick-carousel": "^1.8.1",
+    "wow.js": "^1.2.2"
+  }
+}
