@@ -2,7 +2,7 @@ const { src, dest, watch, parallel, series } = require('gulp');
 const scss = require('gulp-sass');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
-const uglify = require('gulp-uglify-es').default;
+const uglify = require('gulp-uglify-es');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
 const del = require('del');
@@ -48,11 +48,10 @@ function scripts() {
 		// 'node_modules/baguettebox.js/dist/baguetteBox.js',
 		// 'node_modules/fullpage.js/dist/fullpage.js',
 		// 'node_modules/fullpage.js/vendors/scrolloverflow.js',
-        // 'node_modules/jquery/dist/jquery.js',
-        'app/js/main.js'
+    // 'node_modules/jquery/dist/jquery.js',
+       'app/js/main.js'
     ])
         .pipe(concat('main.min.js'))
-        .pipe(uglify())
         .pipe(dest('app/js'))
         .pipe(browserSync.stream());
 }

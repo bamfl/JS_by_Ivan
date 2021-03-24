@@ -296,39 +296,68 @@
 
 // 4. С помощью оператора Sread (развернуть структуру на отдельные элементы)
 // 4.1 Для массивов []
-const oldArr = ['a', 'b', 'c'];
-const newArr = [...oldArr];
+// const oldArr = ['a', 'b', 'c'];
+// const newArr = [...oldArr];
 
-newArr[0] = 'u';
+// newArr[0] = 'u';
 
-console.log(...oldArr);
-console.log(oldArr);
-console.log(newArr);
+// console.log(...oldArr);
+// console.log(oldArr);
+// console.log(newArr);
 
-// Spread массива в аргументы функции
-function logger(a, b, c) {
-	console.log(a);
-	console.log(b);
-	console.log(c);
-}
+// // Spread массива в аргументы функции
+// function logger(a, b, c) {
+// 	console.log(a);
+// 	console.log(b);
+// 	console.log(c);
+// }
 
-const num = [1, 2, 3];
+// const num = [1, 2, 3];
 
-logger(...num);
+// logger(...num);
 
-// 4.2 Для объектов {}
-const obj = {
-  a: 5,
-  b: 1,
-  c: {
-    x: 7,
-    y: 4,
-  }
+// // 4.2 Для объектов {}
+// const obj = {
+//   a: 5,
+//   b: 1,
+//   c: {
+//     x: 7,
+//     y: 4,
+//   }
+// };
+
+// const newObj = {...obj};
+
+// newObj.a = 222;
+
+// console.log(obj);
+// console.log(newObj);
+
+// 23. Основы ООП, прототипно-ориентированное наследование
+// let str = 'some';
+// let strObj = new String(str);
+
+// // console.log(typeof str);
+// // console.log(typeof strObj);
+
+// console.dir([1, 2, 3]);
+
+const soldier = {
+	health: 400,
+	armor: 100,
+	sayHello: function() {
+		console.log('Hello');
+	}
 };
 
-const newObj = {...obj};
+// const john = {
+// 	health: 100
+// };
 
-newObj.a = 222;
+// Object.setPrototypeOf(john, soldier);
 
-console.log(obj);
-console.log(newObj);
+// john.__proto__ = soldier; // Устаревший формат
+
+const john = Object.create(soldier);
+
+john.sayHello();
