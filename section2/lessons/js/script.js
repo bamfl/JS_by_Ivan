@@ -342,22 +342,24 @@
 
 // console.dir([1, 2, 3]);
 
-const soldier = {
-	health: 400,
-	armor: 100,
-	sayHello: function() {
-		console.log('Hello');
-	}
-};
-
-// const john = {
-// 	health: 100
+// const soldier = {
+// 	health: 400,
+// 	armor: 100,
+// 	sayHello: function() {
+// 		console.log('Hello');
+// 	}
 // };
 
-// Object.setPrototypeOf(john, soldier);
+// // const john = {
+// // 	health: 100
+// // };
 
-// john.__proto__ = soldier; // Устаревший формат
+// // Object.setPrototypeOf(john, soldier);
 
-const john = Object.create(soldier);
+// // john.__proto__ = soldier; // Устаревший формат
 
-john.sayHello();
+// const john = Object.create(soldier);
+
+// john.sayHello();
+
+// 28. Получение элементов со страницы
