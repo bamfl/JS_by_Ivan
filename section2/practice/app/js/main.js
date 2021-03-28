@@ -53,11 +53,11 @@ const personalMovieDB = {
 		}
 	},
 	writeYourGenres: function() {
-		for (let i = 0; i < 3; i++) {
-			let answer = prompt(`Ваш любимый жанр под номером ${personalMovieDB.genres.length + 1}`, '');
+		for (let i = 0; i < 1; i++) {
+			let answer = prompt(`Три ваших любимых жанра через запятую с пробелом`, '');
 
 			if (answer !== null && answer.length > 0) {
-				personalMovieDB.genres[personalMovieDB.genres.length] = answer;
+				personalMovieDB.genres = answer.split(', ');
 			} else {
 				i--;
 			}
@@ -75,6 +75,5 @@ const personalMovieDB = {
 	}
 };
 
-personalMovieDB.start();
 personalMovieDB.writeYourGenres();
 personalMovieDB.showMyDB();
