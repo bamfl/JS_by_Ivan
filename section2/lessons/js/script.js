@@ -363,3 +363,59 @@
 // john.sayHello();
 
 // 28. Получение элементов со страницы
+
+// Learn JavaScript
+// Напишите код, выполнив задание из каждого пункта отдельной строкой:
+
+// Создайте пустой объект user.
+// Добавьте свойство name со значением John.
+// Добавьте свойство surname со значением Smith.
+// Измените значение свойства name на Pete.
+// Удалите свойство name из объекта.
+
+// const user = {
+// 	name: 'John',
+// 	surname: 'Smith'
+// };
+
+// user.name = 'Pete';
+
+// delete user.name;
+
+// console.log(user);
+
+// let isEmpty = obj => {
+// 	if (obj.property === 'undefined') {
+// 		return false;
+// 	}
+
+// 	return true;
+// };
+
+// let schedule = {};
+
+// alert( isEmpty(schedule) ); // true
+
+// schedule["8:30"] = "get up";
+
+// alert( isEmpty(schedule) ); // false
+
+// const salaries = {
+//   John: 100,
+//   Ann: 160,
+//   Pete: 130
+// };
+
+// const summFunc = salaries => {
+// 	let salary = 0;
+
+// 	for (let key in salaries) {		
+// 		salary += salaries[key];
+// 	}
+
+// 	return salary;
+// };
+
+// let money = summFunc(salaries);
+
+// console.log(money);
