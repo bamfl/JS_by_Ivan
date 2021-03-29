@@ -28,16 +28,16 @@ const ads = document.querySelector('.promo__adv'),
       bg = document.querySelector('.promo__bg'),
       list = document.querySelector('.promo__interactive-list'),
       listItems = document.querySelectorAll('.promo__interactive-item'),
-      sortedList = movieDB.movies.sort(),
+      sortedList = movieDB.movies.sort(), // Отсортировать их по алфавиту 
       content = document.querySelector('.promo__content');
 
-ads.remove();
+ads.remove(); // 1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
 content.style.cssText = 'width: calc(100% - 300px);';
 
-genre.innerHTML = 'Драма';
+genre.innerHTML = 'Драма'; // 2) Изменить жанр фильма, поменять "комедия" на "драма"
 
-bg.style.cssText = "background: url(../img/bg.jpg) top center/cover no-repeat;";
+bg.style.cssText = "background: url(../img/bg.jpg) top center/cover no-repeat;"; // 3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img. Реализовать только при помощи JS
 
 
 listItems.forEach(listItem => {
@@ -52,8 +52,8 @@ const listCreate = () => {
 
 		list.append(li);
 
-		li.innerHTML = `${i + 1}. ${sortedList[i]}`;
+		li.innerHTML = `${i + 1}. ${sortedList[i]}`; // 5) Добавить нумерацию выведенных фильмов
 	}
 };
 
-listCreate();
+listCreate(); // 4) Список фильмов на странице сформировать на основании данных из этого JS файла
