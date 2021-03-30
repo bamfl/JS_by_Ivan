@@ -419,3 +419,5 @@
 // let money = summFunc(salaries);
 
 // console.log(money);
+
+// 31. События и их обработчики
