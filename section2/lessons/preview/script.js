@@ -15,8 +15,8 @@
 // };
 
 // 3. Современные методы
-// const wrp = document.querySelector('.wrp');
-// const btn = wrp.querySelector('button');
+const wrp = document.querySelector('.wrp');
+const btn = wrp.querySelector('button');
 
 // btn.addEventListener('click', () => {
 // 	alert(10);
@@ -71,14 +71,16 @@
 // });
 
 // Событие на несколько элементов
-const buttons = document.querySelectorAll('button');
+// const buttons = document.querySelectorAll('button');
 
-const alertTen = () => alert(10);
+// const alertTen = () => alert(10);
 
-buttons.forEach(btn => {
-	btn.addEventListener('click', alertTen, {once: true}); // один раз
-});
+// buttons.forEach(btn => {
+// 	btn.addEventListener('click', alertTen, {once: true}); // один раз
+// });
 
 // for (let btn of buttons) {
 // 	btn.addEventListener('click', alertTen);
 // }
+
+// 32. Навигация по DOM - элементам, data-атрибуты, преимущество for/of
