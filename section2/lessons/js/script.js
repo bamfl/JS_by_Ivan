@@ -421,3 +421,55 @@
 // console.log(money);
 
 // 31. События и их обработчики
+
+// 34. События на мобильных устройствах
+
+// document.addEventListener('DOMContentLoaded', () => {
+// 	const box = document.querySelector('.box');
+
+// 	// touchstart - касание экрана пальцем
+// 	// box.addEventListener('touchstart', (event) => { 
+// 	// 	event.preventDefault();
+
+// 	// 	console.log('touchstart');
+// 	// 	console.log(event.touches); // touches - кол-во пальцев на экране
+// 	// 	console.log(event.targetTouches); // targetTouches - кол-во пальцев на элементе
+// 	// 	console.log(event.changedTouches); // changedTouches - кол-во пальцев участвовших в событии
+// 	// });
+
+// 	// touchmove - зажали и перемещаем палец
+// 	// box.addEventListener('touchmove', (event) => {
+// 	// 	event.preventDefault();
+
+// 	// 	console.log('touchmove');
+// 	// });
+
+// 	// // touchend - отпустили палец
+// 	// box.addEventListener('touchend', (event) => {
+// 	// 	event.preventDefault();
+
+// 	// 	console.log('touchend');
+// 	// });
+
+// 	box.addEventListener('touchmove', (event) => {
+// 		event.preventDefault();
+
+// 		console.log(event.targetTouches[0].pageX); // координаты для swipe
+// 	});
+// });
+
+// 35. Async, defer, динамические скрипты
+
+const p = document.querySelectorAll('p');
+console.log(p);
+
+const loadScript = (src) => {
+	const script = document.createElement('script');
+
+	script.src = src;
+	script.async = false;
+	
+	document.body.append(script);
+};
+
+loadScript('js/alert.js');
