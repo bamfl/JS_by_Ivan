@@ -1,46 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // const tabMenus = document.querySelector('.tabheader__items'),
-  // 		tabContent = document.querySelectorAll('.tabcontent');
-
-  // tabMenus.addEventListener('click', (event) => {
-  // 	for (let node of tabMenus.childNodes) {
-  // 		if (node.nodeName !== '#text') {
-  // 			node.classList.remove('tabheader__item_active');
-  // 		}
-  // 	}
-
-  // 	for (let node of tabContent) {
-  // 		node.classList.remove('tabcontent_active');
-  // 	}
-
-  // 	if (event.target && event.target.matches('.tabheader__item')) {
-  // 		event.target.classList.add('tabheader__item_active');
-  // 	}
-
-  // 	let idx = -1;
-
-  // 	for (let tabMenu of tabMenus.childNodes) {
-  // 		if (tabMenu.nodeName !== '#text') {
-  // 			idx++;
-
-  // 			if (tabMenu.classList.contains('tabheader__item_active')) {
-  // 				break;
-  // 			}
-  // 		}
-  // 	}
-
-  // 	tabContent[idx].classList.add('tabcontent_active');
-  // });
-
-  // const newTabItem = document.createElement('div');
-  // newTabItem.classList.add('tabheader__item');
-  // newTabItem.innerHTML = 'Хуй';
-  // tabMenus.append(newTabItem);
-
   const tabContent = document.querySelectorAll('.tabcontent'),
   			tabs = document.querySelectorAll('.tabheader__item'),
-  			tabList = document.querySelector('.tabheader__items');
+  			tabList = document.querySelector('.tabheader__items'),
+				daysBox = document.getElementById('days'),
+				hoursBox = document.getElementById('hours'),
+				minutesBox = document.getElementById('minutes'),
+				secondsBox = document.getElementById('seconds');
 
+	// Tabs
   const removeClass = () => {
   	tabContent.forEach(item => {
   		item.classList.remove('tabcontent_active');
@@ -73,8 +40,36 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
   });
 
-  // const newTabItem = document.createElement('div');
-  // newTabItem.classList.add('tabheader__item');
-  // newTabItem.innerHTML = 'Новый элемент';
-  // tabList.append(newTabItem);
+	// Counter
+	const deadline = new Date('2021-05-01T00:00');
+	
+	const timeCounter = () => {
+		const nowDate = new Date();
+
+		let timeDiff = new Date(deadline - nowDate);
+
+		const getZero = num => {
+			if (num <= 10) {
+				return `0${num}`;
+			} else {
+				return num;
+			}
+		};
+
+		if (timeDiff > 0) {
+			daysBox.innerHTML = getZero(`${parseInt(timeDiff / (1000 * 60 * 60 * 24))}`);
+			hoursBox.innerHTML = getZero(`${parseInt((timeDiff / (1000 * 60 * 60)) % 24)}`);
+			minutesBox.innerHTML = getZero(`${parseInt((timeDiff / (1000 * 60)) % 60)}`);
+			secondsBox.innerHTML = getZero(`${parseInt((timeDiff / 1000) % 60)}`);
+		} else {
+			daysBox.innerHTML = `0`;
+			hoursBox.innerHTML = `0`;
+			minutesBox.innerHTML = `0`;
+			secondsBox.innerHTML = `0`;
+			clearInterval(timerId);
+		}
+	};
+
+	timeCounter();
+	const timerId = setInterval(timeCounter, 1000);
 });
