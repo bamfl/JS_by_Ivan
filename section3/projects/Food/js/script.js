@@ -62,14 +62,46 @@ document.addEventListener('DOMContentLoaded', () => {
 			minutesBox.innerHTML = getZero(`${parseInt((timeDiff / (1000 * 60)) % 60)}`);
 			secondsBox.innerHTML = getZero(`${parseInt((timeDiff / 1000) % 60)}`);
 		} else {
-			daysBox.innerHTML = `0`;
-			hoursBox.innerHTML = `0`;
-			minutesBox.innerHTML = `0`;
-			secondsBox.innerHTML = `0`;
+			daysBox.innerHTML = `00`;
+			hoursBox.innerHTML = `00`;
+			minutesBox.innerHTML = `00`;
+			secondsBox.innerHTML = `00`;
 			clearInterval(timerId);
 		}
 	};
 
 	timeCounter();
 	const timerId = setInterval(timeCounter, 1000);
+
+	// Modal
+	const openModalBtns = document.querySelectorAll('[data-modalopen]'),
+				closeModalBtn = document.querySelector('[data-modalclose]'),
+				modalWindow = document.querySelector('.modal');
+
+	openModalBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			document.body.style.cssText = 'overflow: hidden; width: 100%;';
+			modalWindow.style.display = 'block';
+		});
+	});
+
+	const closeActions = () => {
+		document.body.style.cssText = 'overflow: ""; width: ""';
+		modalWindow.style.display = 'none';
+	};
+
+	closeModalBtn.addEventListener('click', closeActions);
+
+	modalWindow.addEventListener('click', (event) => {
+		if (event.target && event.target.matches('.modal')) {
+			closeActions();
+		}
+	});
+
+	document.addEventListener('keyup', (event) => {
+		if (event.code === 'Escape' && modalWindow.style.display === 'block') {
+			console.log('action');
+			closeActions();
+		}
+	});
 });
