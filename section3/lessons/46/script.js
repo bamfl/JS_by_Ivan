@@ -71,20 +71,20 @@
 
 const btn = document.querySelector('button');
 
-// btn.addEventListener('click', (event) => {
-// 	console.log(this);
-// 	console.log(event.target);
-// });
+btn.addEventListener('click', (event) => {
+	console.log(this);
+	console.log(event.target);
+});
 
-const obj = {
-	num: 5,
-	sayNum: function() {
-		const say = () => {
-			console.log(this);
-		};
+// const obj = {
+// 	num: 5,
+// 	sayNum: function() {
+// 		const say = () => {
+// 			console.log(this);
+// 		};
 
-		say();
-	}
-};
+// 		say();
+// 	}
+// };
 
-obj.sayNum();
+// obj.sayNum();
