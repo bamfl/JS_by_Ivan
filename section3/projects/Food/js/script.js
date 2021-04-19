@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	document.addEventListener('scroll', scrollModalOpen);
 
-	// Классы ES6
+	// 48. Классы ES6
 	class Card {
 		constructor(imageSrc, imageSrcAlt, title, descr, price, parentSelector) {
 			this.imageSrc = imageSrc;
