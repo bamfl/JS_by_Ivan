@@ -121,12 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// 48. Классы ES6
 	class Card {
-		constructor(imageSrc, imageSrcAlt, title, descr, price, parentSelector) {
+		constructor(imageSrc, imageSrcAlt, title, descr, price, parentSelector, ...classes) {
 			this.imageSrc = imageSrc;
 			this.imageSrcAlt = imageSrcAlt;
 			this.title = title;
 			this.descr = descr;
 			this.price = price;
+			this.classes = classes;
 			this.parent = document.querySelector(parentSelector);
 			this.transfer = 27;
 			this.changeToUAH();
@@ -139,16 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		render() {
 			const div = document.createElement('div');
 
+			if (this.classes.length > 0) {
+				this.classes.forEach(className => div.classList.add(className));
+			} else {
+				div.classList.add('menu__item');
+			}
+
 			div.innerHTML = `
-				<div class="menu__item">
-					<img src="${this.imageSrc}" alt="${this.imageSrcAlt}" />
-					<h3 class="menu__item-subtitle">${this.title}</h3>
-					<div class="menu__item-descr">${this.descr}</div>
-					<div class="menu__item-divider"></div>
-					<div class="menu__item-price">
-						<div class="menu__item-cost">Цена:</div>
-						<div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-					</div>
+				<img src="${this.imageSrc}" alt="${this.imageSrcAlt}" />
+				<h3 class="menu__item-subtitle">${this.title}</h3>
+				<div class="menu__item-descr">${this.descr}</div>
+				<div class="menu__item-divider"></div>
+				<div class="menu__item-price">
+					<div class="menu__item-cost">Цена:</div>
+					<div class="menu__item-total"><span>${this.price}</span> грн/день</div>
 				</div>
 			`;
 			
