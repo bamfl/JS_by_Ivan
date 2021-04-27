@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	// const modalTimerId = setTimeout(openActions, 3000);
+	const modalTimerId = setTimeout(openActions, 10000);
 
 	const scrollModalOpen = () => {
 		if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight) {
@@ -202,4 +202,66 @@ document.addEventListener('DOMContentLoaded', () => {
 		15.93,
 		'.menu__field .container'
 	).render();
+
+	// 53. Реализация скрипта отправки данных на сервер
+	const forms = document.querySelectorAll('form');
+
+	const showThanksModal = (message) => {
+		const modalContent = modalWindow.querySelector('.modal__content > form');
+		modalContent.style.cssText = 'display: none';
+
+		const modalSuccessDiv = document.createElement('div');
+		modalSuccessDiv.innerHTML = `<h1>${message}</h1>`;	
+		modalWindow.querySelector('.modal__content').append(modalSuccessDiv);
+
+		setTimeout(() => {
+			modalContent.style.cssText = '';
+			modalSuccessDiv.remove();
+			closeActions();
+		}, 2000);
+	};
+
+	const sendPostData = (form) => {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const modalContent = modalWindow.querySelector('.modal__content > form');
+			modalContent.style.cssText = 'display: none';
+
+			const spinner = document.createElement('img');
+			spinner.src = `img/spinner.svg`;
+			spinner.style.cssText = 'diplay: block; width: 40px; height: 40px; margin: 0 auto;';
+			modalWindow.querySelector('.modal__content').append(spinner);
+
+			const request = new XMLHttpRequest();
+			const postData = new FormData(form);
+			const jsonObject = {};
+	
+			request.open('POST', 'server.php');
+			request.setRequestHeader('Content-type', 'application/json');
+	
+			postData.forEach((value, key) => {
+				jsonObject[key] = value;
+			});
+	
+			const jsonData = JSON.stringify(jsonObject);
+			console.log(jsonData);
+			request.send(jsonData);
+
+			request.addEventListener('load', () => {
+				if (request.status === 200) {
+					console.log(request.response);
+					showThanksModal('Успешно отправлено!!!');
+					spinner.remove();
+				} else {
+					showThanksModal('Не отправлено, ошибка!!!');
+					spinner.remove();
+				}
+			});
+		});		
+	};	
+
+	forms.forEach(form => {
+		sendPostData(form);
+	});
 });

@@ -1,24 +1,24 @@
 'use strict';
 
 // 51. JSON формат передачи данных, глубокое клонирование объектов
-// const persone = {
-// 	name: 'Alex',
-// 	tel: '+744444444',
-// 	parents: {
-// 		mom: 'Toma',
-// 		dad: 'Nickolay'
-// 	}
-// };
+const persone = {
+	name: 'Alex',
+	tel: '+744444444',
+	parents: {
+		mom: 'Toma',
+		dad: 'Nickolay'
+	}
+};
 
-// console.log(JSON.stringify(persone)); // Превратить объект в JSON: {"name":"Alex","tel":"+744444444","parents":{"mom":"Toma","dad":"Nickolay"}}
+console.log(JSON.stringify(persone)); // Превратить объект в JSON: {"name":"Alex","tel":"+744444444","parents":{"mom":"Toma","dad":"Nickolay"}}
 
-// console.log(JSON.parse(JSON.stringify(persone))); // Превратить JSON в объект: { name: 'Alex', tel: '+744444444',parents:{mom:"Toma",dad:"Nickolay"} }
+console.log(JSON.parse(JSON.stringify(persone))); // Превратить JSON в объект: { name: 'Alex', tel: '+744444444',parents:{mom:"Toma",dad:"Nickolay"} }
 
-// const clone = JSON.parse(JSON.stringify(persone)); // Глубокое клонирование объекта
-// clone.parents.mom = 'Tamara';
+const clone = JSON.parse(JSON.stringify(persone)); // Глубокое клонирование объекта
+clone.parents.mom = 'Tamara';
 
-// console.log(persone);
-// console.log(clone);
+console.log(persone);
+console.log(clone);
 
 // 52. AJAX и общение с сервером
 const inputRub = document.querySelector('#rub'),
@@ -32,7 +32,7 @@ inputRub.addEventListener('input', () => {
 	request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 	request.send();
 
-	// Свойства объекта XMLHttpRequest: (status, statusText, response, readyState)
+	// Свойства объекта XMLHttpRequest: (status, statusText, response, readyState и др.)
 	// console.log(request);
 
 	// События объекта XMLHttpRequest: (load, start, readystatechange)
