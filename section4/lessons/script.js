@@ -46,3 +46,22 @@ inputRub.addEventListener('input', () => {
 		}
 	});
 });
+
+// 56. Fetch API
+// GET
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+	.then(jsonResponse => jsonResponse.json()) // превратить json в объект, и дальше вернуть Promise
+	.then(object => console.log(object));
+
+// POST
+fetch('https://jsonplaceholder.typicode.com/posts', {
+	method: 'POST',
+	headers: {
+		'Content-type': 'application/json'
+	},
+	body: JSON.stringify({
+		name: 'Dima'
+	})
+})
+.then(jsonResponse => jsonResponse.json())
+.then(object => console.log(object));

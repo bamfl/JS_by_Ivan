@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const spinner = document.createElement('img');
 			spinner.src = `img/spinner.svg`;
-			spinner.style.cssText = 'diplay: block; width: 40px; height: 40px; margin: 0 auto;';
+			spinner.style.cssText = 'display: block; width: 40px; height: 40px; margin: 0 auto;';
 			modalWindow.querySelector('.modal__content').append(spinner);
 
 			const request = new XMLHttpRequest();
