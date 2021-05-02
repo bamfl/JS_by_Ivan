@@ -119,3 +119,74 @@
 // Promise.race([test(1000), test(5000)]).then(() => {
 // 	console.log('Race');
 // });
+
+// 56. Fetch API
+	// GET
+	// fetch('https://jsonplaceholder.typicode.com/todos/1')
+	// 	.then(jsonResponse => jsonResponse.json()) // превратить json в объект, и дальше вернуть Promise
+	// 	.then(object => console.log(object));
+
+	// POST
+	// fetch('https://jsonplaceholder.typicode.com/posts', {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-type': 'application/json'
+	// 	},
+	// 	body: JSON.stringify({
+	// 		name: 'Dima'
+	// 	})
+	// })
+	// .then(jsonResponse => jsonResponse.json())
+	// .then(object => console.log(object));
+
+// 57. Методы перебора массивов
+
+// Возвращают новый массив:
+
+// 1. filter
+// const names = ['Ivan', 'Anna', 'Ksenia', 'Volandemort'];
+// const shortNames = names.filter(name => name.length < 5);
+// console.log(shortNames);
+
+// // 2. map
+// const answers = ['IvAn', 'AnnA', 'KseniA', 'VolAndemort'];
+// const result = answers.map(item => item.toLowerCase());
+// console.log(result);
+
+// // 3. some
+// const some = [4, 'sffsd', 'dgdgf'];
+// console.log(some.some(item => typeof item === 'number'));
+
+// // 4. every
+// const every = [4, 'sffsd', 'dgdgf'];
+// console.log(every.every(item => typeof item === 'number'));
+
+// 5. reduce (уменьшить)
+// const arr = [4, 5, 1, 3, 2, 6];
+// let summ = 0;
+
+// arr.forEach((value) => {
+// 	summ += value;
+// });
+
+// console.log(summ);
+
+// const arr = [4, 5, 1, 3, 2, 6];
+// const res = arr.reduce((summ, current) => summ + current);
+
+// const arr = ['apple', 'orange', 'pear'];
+// const res = arr.reduce((summ, current) => `${summ}, ${current}`);
+// console.log(res);
+
+const obj = {
+	ivan: 'persone',
+	ann: 'persone',
+	dog: 'animal',
+	cat: 'animal'
+};
+
+const newArr = Object.entries(obj)
+.filter(item => item[1] === 'persone')
+.map(item => item[0]);
+
+console.log(newArr);
