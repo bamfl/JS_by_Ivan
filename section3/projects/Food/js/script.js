@@ -230,15 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const spinner = document.createElement('img');
 			spinner.src = `img/spinner.svg`;
-			spinner.style.cssText = 'diplay: block; width: 40px; height: 40px; margin: 0 auto;';
+			spinner.style.cssText = 'display: block; width: 40px; height: 40px; margin: 0 auto;';
 			modalWindow.querySelector('.modal__content').append(spinner);
 
-			const request = new XMLHttpRequest();
 			const postData = new FormData(form);
 			const jsonObject = {};
-	
-			request.open('POST', 'server.php');
-			request.setRequestHeader('Content-type', 'application/json');
 	
 			postData.forEach((value, key) => {
 				jsonObject[key] = value;
@@ -246,22 +242,50 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 			const jsonData = JSON.stringify(jsonObject);
 			console.log(jsonData);
-			request.send(jsonData);
 
-			request.addEventListener('load', () => {
-				if (request.status === 200) {
-					console.log(request.response);
-					showThanksModal('Успешно отправлено!!!');
-					spinner.remove();
-				} else {
-					showThanksModal('Не отправлено, ошибка!!!');
-					spinner.remove();
-				}
+			fetch('server.php', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: jsonData
+			})
+			.then((jsonData) => jsonData.text())
+			.then((jsonData) => {
+				console.log(jsonData);
+				showThanksModal('Успешно отправлено!!!');
+				spinner.remove();
+			})
+			.catch(() => {
+				showThanksModal('Не отправлено, ошибка!!!');
+				spinner.remove();
+			})
+			.finally(() => {
+				form.reset();
 			});
 		});		
-	};	
+	};
 
 	forms.forEach(form => {
 		sendPostData(form);
 	});
+
+	// 56. Fetch API
+	// GET
+	// fetch('https://jsonplaceholder.typicode.com/todos/1')
+	// 	.then(jsonResponse => jsonResponse.json()) // превратить json в объект, и дальше вернуть Promise
+	// 	.then(object => console.log(object));
+
+	// POST
+	// fetch('https://jsonplaceholder.typicode.com/posts', {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-type': 'application/json'
+	// 	},
+	// 	body: JSON.stringify({
+	// 		name: 'Dima'
+	// 	})
+	// })
+	// .then(jsonResponse => jsonResponse.json())
+	// .then(object => console.log(object));
 });
