@@ -43,8 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Counter
 	const deadline = new Date('2021-05-01T00:00');
 	
+	
 	const timeCounter = () => {
 		const nowDate = new Date();
+		const timerId = setInterval(timeCounter, 100000);
 
 		let timeDiff = new Date(deadline - nowDate);
 
@@ -71,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	timeCounter();
-	const timerId = setInterval(timeCounter, 1000);
 
 	// Modal
 	const openModalBtns = document.querySelectorAll('[data-modalopen]'),
@@ -167,6 +168,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	clearParent();
 
+	const getData = async (url) => {
+		const response = await fetch(url);
+
+		if (response.status !== 200) {
+			throw new Error(`Can't fetch ${url}, status: ${response.status}`);
+		}
+
+		return await response.json();
+	};
+
+	getData('http://localhost:3000/menu')
+	.then(objectMenu => {
+		objectMenu.forEach(({img, altimg, title, descr, price}) => {
+			new Card(
+				img,
+				altimg,
+				title,
+				descr,
+				price,
+				'.menu__field .container'
+			).render();
+		});
+	});
+
 	// const fitnessCard = new Card('img/tabs/vegy.jpg', 'vegy', 'Меню "Фитнес"', 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 8.48, '.menu__field .container');
 	// const premiumCard = new Card('img/tabs/elite.jpg', 'elite', 'Меню “Премиум”', 'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 20.37, '.menu__field .container');
 	// const postCard = new Card('img/tabs/post.jpg', 'post', 'Меню "Постное"', 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.', 15.93, '.menu__field .container');
@@ -176,32 +201,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	// postCard.render();
 
 	// или другой синтаксис
-	new Card(
-		'img/tabs/vegy.jpg',
-		'vegy',
-		'Меню "Фитнес"',
-		'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-		8.48,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/vegy.jpg',
+	// 	'vegy',
+	// 	'Меню "Фитнес"',
+	// 	'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+	// 	8.48,
+	// 	'.menu__field .container'
+	// ).render();
 	
-	new Card(
-		'img/tabs/elite.jpg',
-		'elite',
-		'Меню “Премиум”',
-		'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-		20.37,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/elite.jpg',
+	// 	'elite',
+	// 	'Меню “Премиум”',
+	// 	'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+	// 	20.37,
+	// 	'.menu__field .container'
+	// ).render();
 
-	new Card(
-		'img/tabs/post.jpg',
-		'post',
-		'Меню "Постное"',
-		'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.',
-		15.93,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/post.jpg',
+	// 	'post',
+	// 	'Меню "Постное"',
+	// 	'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.',
+	// 	15.93,
+	// 	'.menu__field .container'
+	// ).render();
 
 	// 53. Реализация скрипта отправки данных на сервер
 	const forms = document.querySelectorAll('form');
@@ -221,7 +246,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 2000);
 	};
 
-	const sendPostData = (form) => {
+	const postData = async (url, method, body) => {
+		const response = await fetch(url, {
+			method: method,
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: body
+		});
+
+		return await response.json();
+	};
+
+	const bindPostData = (form) => {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 
@@ -233,25 +270,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			spinner.style.cssText = 'display: block; width: 40px; height: 40px; margin: 0 auto;';
 			modalWindow.querySelector('.modal__content').append(spinner);
 
-			const postData = new FormData(form);
-			const jsonObject = {};
+			const formData = new FormData(form);
+			// const jsonObject = {};
 	
-			postData.forEach((value, key) => {
-				jsonObject[key] = value;
-			});
-	
-			const jsonData = JSON.stringify(jsonObject);
-			console.log(jsonData);
+			// formData.forEach((value, key) => {
+			// 	jsonObject[key] = value;
+			// });
+			
+			// const jsonData = JSON.stringify(jsonObject);
 
-			fetch('server.php', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json'
-				},
-				body: jsonData
-			})
-			.then((jsonData) => jsonData.text())
-			.then((jsonData) => {
+			const jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+
+			postData('http://localhost:3000/requests', 'POST', jsonData)
+			.then(jsonData => {
 				console.log(jsonData);
 				showThanksModal('Успешно отправлено!!!');
 				spinner.remove();
@@ -267,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	forms.forEach(form => {
-		sendPostData(form);
+		bindPostData(form);
 	});
 
 	// 56. Fetch API
@@ -280,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// fetch('https://jsonplaceholder.typicode.com/posts', {
 	// 	method: 'POST',
 	// 	headers: {
-	// 		'Content-type': 'application/json'
+	// 		'Content-Type': 'application/json'
 	// 	},
 	// 	body: JSON.stringify({
 	// 		name: 'Dima'
