@@ -168,19 +168,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	clearParent();
 
-	const getData = async (url) => {
-		const response = await fetch(url);
+	// const getData = async (url) => {
+	// 	const response = await fetch(url);
 
-		if (response.status !== 200) {
-			throw new Error(`Can't fetch ${url}, status: ${response.status}`);
-		}
+	// 	if (response.status !== 200) {
+	// 		throw new Error(`Can't fetch ${url}, status: ${response.status}`);
+	// 	}
 
-		return await response.json();
-	};
+	// 	return await response.json();
+	// };
 
-	getData('http://localhost:3000/menu')
-	.then(objectMenu => {
-		objectMenu.forEach(({img, altimg, title, descr, price}) => {
+	axios.get('http://localhost:3000/menu')
+	.then(({data}) => {
+		data.forEach(({img, altimg, title, descr, price}) => {
 			new Card(
 				img,
 				altimg,
@@ -191,6 +191,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			).render();
 		});
 	});
+
+	// getData('http://localhost:3000/menu')
+	// .then(objectMenu => {
+	// 	objectMenu.forEach(({img, altimg, title, descr, price}) => {
+	// 		new Card(
+	// 			img,
+	// 			altimg,
+	// 			title,
+	// 			descr,
+	// 			price,
+	// 			'.menu__field .container'
+	// 		).render();
+	// 	});
+	// });
 
 	// const fitnessCard = new Card('img/tabs/vegy.jpg', 'vegy', 'Меню "Фитнес"', 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 8.48, '.menu__field .container');
 	// const premiumCard = new Card('img/tabs/elite.jpg', 'elite', 'Меню “Премиум”', 'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 20.37, '.menu__field .container');
