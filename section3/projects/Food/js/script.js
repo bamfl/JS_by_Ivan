@@ -333,4 +333,53 @@ document.addEventListener('DOMContentLoaded', () => {
 	// })
 	// .then(jsonResponse => jsonResponse.json())
 	// .then(object => console.log(object));
+
+	// 61. Создаем слайдер на сайте, вариант 1
+	const prevArrow = document.querySelector('.offer__slider-prev'),
+				nextArrow = document.querySelector('.offer__slider-next'),
+				currentSlideNumber = document.querySelector('#current'),
+				totalSlideNumber = document.querySelector('#total'),
+				slides = document.querySelectorAll('.offer__slide');
+
+	let counter = 0;
+	
+	const renderSlide = (counter) => {
+		if (counter + 1 < 10) {
+			currentSlideNumber.innerHTML = `0${counter + 1}`;
+		} else {
+			currentSlideNumber.innerHTML = counter + 1;
+		}
+
+		if (slides.length < 10) {
+			totalSlideNumber.innerHTML = `0${slides.length}`;
+		} else {
+			totalSlideNumber.innerHTML = slides.length;
+		}
+		
+		slides.forEach((slide, idx) => {
+			slide.style.display = 'none';
+
+			if (counter === idx) {
+				slide.style.display = 'block';
+			}
+		});
+	};
+
+	renderSlide(counter);
+
+	nextArrow.addEventListener('click', () => {
+		if (counter + 1 < slides.length) {
+			counter++;
+		} else {
+			counter = 0;
+		}
+		renderSlide(counter);
+	});
+
+	prevArrow.addEventListener('click', () => {
+		if (counter > 0) {
+			counter--;
+			renderSlide(counter);
+		}
+	});
 });
