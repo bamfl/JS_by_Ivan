@@ -343,11 +343,15 @@ document.addEventListener('DOMContentLoaded', () => {
 				slidesWrapper = document.querySelector('.offer__slider-wrapper'),
 				slidesInner = document.querySelector('.offer__slider-inner');
 
-	let counter = 0;
+	let counter = 4;	
 
-	slidesWrapper.style.cssText = 'overflow: hidden; height: 390px';	
-	
-	const renderSlide = (counter) => {
+	slidesWrapper.style.cssText = 'overflow: hidden; height: 390px; position: relative';	
+
+	const carouselIndicators = document.createElement('div');
+	carouselIndicators.classList.add('carousel-indicators');
+	slidesWrapper.append(carouselIndicators);
+
+	const sliderNav = (counter) => {
 		if (counter + 1 < 10) {
 			currentSlideNumber.innerHTML = `0${counter + 1}`;
 		} else {
@@ -358,13 +362,38 @@ document.addEventListener('DOMContentLoaded', () => {
 			totalSlideNumber.innerHTML = `0${slides.length}`;
 		} else {
 			totalSlideNumber.innerHTML = slides.length;
-		}		
+		}
+	};
 
-		slides.forEach(slide => {
+	const renderSlide = (counter) => {
+		sliderNav(counter);
+
+		carouselIndicators.innerHTML = '';
+
+		slides.forEach((slide, idx) => {
 			slide.style.cssText = 'min-width: 100%';
-		});
 
-		slidesInner.style.cssText = `display: flex; transition: all 0.5s; transform: translate(-${counter * 100}%, 0);`;
+			const dot = document.createElement('div');
+			dot.classList.add('dot');
+			carouselIndicators.append(dot);
+
+			if (counter === idx) {
+				dot.classList.add('active');
+			}
+
+			dot.addEventListener('click', (event) => {
+
+				dot.classList.remove('active');
+
+				if (event.target === dot) {
+					counter = idx;
+					renderSlide(counter);
+				}
+			});
+		});		
+
+
+		slidesInner.style.cssText = `display: flex; transition: all 0.5s; transform: translate(-${counter * 100}%, 0);`;		
 	};
 
 	renderSlide(counter);
