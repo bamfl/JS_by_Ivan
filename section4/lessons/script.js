@@ -178,15 +178,59 @@
 // const res = arr.reduce((summ, current) => `${summ}, ${current}`);
 // console.log(res);
 
-const obj = {
-	ivan: 'persone',
-	ann: 'persone',
-	dog: 'animal',
-	cat: 'animal'
+// const obj = {
+// 	ivan: 'persone',
+// 	ann: 'persone',
+// 	dog: 'animal',
+// 	cat: 'animal'
+// };
+
+// const newArr = Object.entries(obj)
+// .filter(item => item[1] === 'persone')
+// .map(item => item[0]);
+
+// console.log(newArr);
+
+// 64. Как сохранить данные без БД. Работа с localStorage
+// localStorage.setItem('number', 555);
+// console.log(localStorage.getItem('number'));
+// localStorage.removeItem('number');
+// localStorage.clear();
+
+const checkbox = document.querySelector('#checkbox'),
+      form = document.querySelector('form'),
+			btn = document.querySelector('#color');
+
+let isChecked = localStorage.getItem('isChecked');
+isChecked === 'true' ? checkbox.checked = isChecked : checkbox.checked = false;
+
+checkbox.addEventListener('change', (event) => {
+	isChecked = event.target.checked;
+	localStorage.setItem('isChecked', isChecked);
+	checkbox.checked = isChecked;
+});
+
+
+let isColored = localStorage.getItem('bg');
+isColored === 'red' ? form.style.backgroundColor = isColored : form.style.backgroundColor = '#ffffff';
+
+btn.addEventListener('click', () => {
+	if (localStorage.getItem('bg') === 'red') {
+		localStorage.setItem('bg', '#ffffff');
+	} else {
+		localStorage.setItem('bg', 'red');
+	}
+	
+	isColored = localStorage.getItem('bg');
+
+	form.style.backgroundColor = isColored;
+});
+
+const persone = {
+	name: 'Dima',
+	age: 26,
+	dickLength: 17
 };
 
-const newArr = Object.entries(obj)
-.filter(item => item[1] === 'persone')
-.map(item => item[0]);
-
-console.log(newArr);
+localStorage.setItem('Dima', JSON.stringify(persone));
+console.log(JSON.parse(localStorage.getItem('Dima')));
