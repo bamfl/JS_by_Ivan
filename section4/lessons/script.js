@@ -197,40 +197,82 @@
 // localStorage.removeItem('number');
 // localStorage.clear();
 
-const checkbox = document.querySelector('#checkbox'),
-      form = document.querySelector('form'),
-			btn = document.querySelector('#color');
+// const checkbox = document.querySelector('#checkbox'),
+//       form = document.querySelector('form'),
+// 			btn = document.querySelector('#color');
 
-let isChecked = localStorage.getItem('isChecked');
-isChecked === 'true' ? checkbox.checked = isChecked : checkbox.checked = false;
+// let isChecked = localStorage.getItem('isChecked');
+// isChecked === 'true' ? checkbox.checked = isChecked : checkbox.checked = false;
 
-checkbox.addEventListener('change', (event) => {
-	isChecked = event.target.checked;
-	localStorage.setItem('isChecked', isChecked);
-	checkbox.checked = isChecked;
-});
+// checkbox.addEventListener('change', (event) => {
+// 	isChecked = event.target.checked;
+// 	localStorage.setItem('isChecked', isChecked);
+// 	checkbox.checked = isChecked;
+// });
 
 
-let isColored = localStorage.getItem('bg');
-isColored === 'red' ? form.style.backgroundColor = isColored : form.style.backgroundColor = '#ffffff';
+// let isColored = localStorage.getItem('bg');
+// isColored === 'red' ? form.style.backgroundColor = isColored : form.style.backgroundColor = '#ffffff';
 
-btn.addEventListener('click', () => {
-	if (localStorage.getItem('bg') === 'red') {
-		localStorage.setItem('bg', '#ffffff');
-	} else {
-		localStorage.setItem('bg', 'red');
-	}
+// btn.addEventListener('click', () => {
+// 	if (localStorage.getItem('bg') === 'red') {
+// 		localStorage.setItem('bg', '#ffffff');
+// 	} else {
+// 		localStorage.setItem('bg', 'red');
+// 	}
 	
-	isColored = localStorage.getItem('bg');
+// 	isColored = localStorage.getItem('bg');
 
-	form.style.backgroundColor = isColored;
-});
+// 	form.style.backgroundColor = isColored;
+// });
 
-const persone = {
-	name: 'Dima',
-	age: 26,
-	dickLength: 17
-};
+// const persone = {
+// 	name: 'Dima',
+// 	age: 26,
+// 	dickLength: 17
+// };
 
-localStorage.setItem('Dima', JSON.stringify(persone));
-console.log(JSON.parse(localStorage.getItem('Dima')));
+// localStorage.setItem('Dima', JSON.stringify(persone));
+// console.log(JSON.parse(localStorage.getItem('Dima')));
+
+// summ 1 to 10
+// let counter = 1;
+// let summ = 0;
+
+// while (counter < 11) {
+// 	summ = summ + counter;
+// 	counter++;
+// }
+
+// console.log(summ);
+
+// 65. Регулярные выражения
+// 1. search
+const answer = prompt('Enter the name', '');
+
+const reg = /n/i;
+
+// console.log(answer.search(reg));
+
+// 2. match
+// console.log(answer.match(/n/ig));
+
+// 3. replace
+// console.log(answer.replace(/n/ig, '*'));
+// console.log('12-34-56'.replace(/\-/g, ':'));
+
+// 4 test
+// console.log(reg.test(answer));
+
+// i- любой регистр
+// g - все совпадения
+// m - многостройчный режим
+
+// /\d/ - ищем цифры
+// /\w/ - ищем буквы
+// /\s/ - ищем пробелы
+console.log(answer.match(/\d/));
+
+// /\D/ - ищем не цифры
+// /\W/ - ищем не буквы
+// /\S/ - ищем не пробелы
