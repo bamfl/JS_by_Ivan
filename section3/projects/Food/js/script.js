@@ -423,11 +423,25 @@ document.addEventListener('DOMContentLoaded', () => {
 			height = document.querySelector('#height'),
 			weight = document.querySelector('#weight'),
 			age = document.querySelector('#age'),
-			sexValue = 'female',
-			activityValue = 1.375,
+			sexValue,
+			activityValue,
 			heightValue = 160,
 			weightValue = 50,
 			ageValue = 25;
+
+	if (localStorage.getItem('sexValue')) {
+		sexValue = localStorage.getItem('sexValue');
+	} else {
+		sexValue = 'female';
+		localStorage.setItem('sexValue', sexValue);
+	}
+
+	if (localStorage.getItem('activityValue')) {
+		activityValue = localStorage.getItem('activityValue');
+	} else {
+		activityValue = 1.375;
+		localStorage.setItem('activityValue', activityValue);
+	}
 
 	const calcResult = (sexValue, height, weight, age, activityValue) => {
 		console.log(sexValue, heightValue, weightValue, ageValue, activityValue);
@@ -441,31 +455,46 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	};
 
-	const getBtnData = (parentDiv) => {
-		parentDiv.addEventListener('click', (event) => {
-			const childItems = parentDiv.querySelectorAll('div');
+	const setActiveClass = (parentDiv) => {
+		const childItems = parentDiv.querySelectorAll('div');
 
-			childItems.forEach(item => {
-				item.classList.remove('calculating__choose-item_active');
+		childItems.forEach(item => {
+			item.classList.remove('calculating__choose-item_active');
 
-				if (item === event.target) {
-					item.classList.add('calculating__choose-item_active');
-				}
-			});
-
-			if (event.target.dataset.activity) {
-				activityValue = event.target.dataset.activity;			
-			} else {
-				sexValue = event.target.id;	
+			if (item.id === localStorage.getItem('sexValue')) {
+				item.classList.add('calculating__choose-item_active');
 			}
 
+			if (item.dataset.activity === localStorage.getItem('activityValue')) {
+				item.classList.add('calculating__choose-item_active');
+			}
+		});
+	};
+
+	const getBtnData = (parentDiv) => {
+		parentDiv.addEventListener('click', (event) => {			
+			if (event.target.dataset.activity) {
+				activityValue = event.target.dataset.activity;
+				localStorage.setItem('activityValue', activityValue);			
+			} else {
+				sexValue = event.target.id;	
+				localStorage.setItem('sexValue', sexValue);
+			}
+
+			setActiveClass(parentDiv);
 			calcResult(sexValue, heightValue, weightValue, ageValue, activityValue);
 		});
 	};
 
 	const getInputData = (input) => {
 		input.addEventListener('input', (event) => {
-			input.classList.add('calculating__choose-item_active');
+			if (input.value.match(/\D/g)) {
+				input.style.border = '1px solid red';
+				input.classList.remove('calculating__choose-item_active');
+			} else {
+				input.style.border = '';
+				input.classList.add('calculating__choose-item_active');
+			}
 
 			if (event.target.id === 'height') {
 				heightValue = input.value;
@@ -482,6 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	calcResult(sexValue, heightValue, weightValue, ageValue, activityValue);
 
+	setActiveClass(sex);
+	setActiveClass(activity);
 	getBtnData(sex);
 	getBtnData(activity);
 	getInputData(height);
