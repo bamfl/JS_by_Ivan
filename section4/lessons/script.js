@@ -248,9 +248,9 @@
 
 // 65. Регулярные выражения
 // 1. search
-const answer = prompt('Enter the name', '');
+// const answer = prompt('Enter the name', '');
 
-const reg = /n/i;
+// const reg = /n/i;
 
 // console.log(answer.search(reg));
 
@@ -271,8 +271,27 @@ const reg = /n/i;
 // /\d/ - ищем цифры
 // /\w/ - ищем буквы
 // /\s/ - ищем пробелы
-console.log(answer.match(/\d/));
+// console.log(answer.match(/\d/));
 
 // /\D/ - ищем не цифры
 // /\W/ - ищем не буквы
 // /\S/ - ищем не пробелы
+
+// 68. Геттеры и сеттеры (свойства объектов)
+const persone = {
+	name: 'Dmitriy',
+	sername: 'Petukhov',
+
+	get fullName() {
+		return `${this.name} ${this.sername}`;
+	},
+
+	set fullName(value) {
+		[this.name, this.sername] = value.split(' ');
+	}
+};
+
+console.log(persone.fullName); // get
+
+persone.fullName = 'Ksenia Petukhova'; // set
+console.log(persone.fullName);
