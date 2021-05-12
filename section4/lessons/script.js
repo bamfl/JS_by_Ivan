@@ -65,3 +65,4 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
 })
 .then(jsonResponse => jsonResponse.json())
 .then(object => console.log(object));
+
