@@ -43,8 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Counter
 	const deadline = new Date('2021-05-01T00:00');
 	
+	
 	const timeCounter = () => {
 		const nowDate = new Date();
+		const timerId = setInterval(timeCounter, 100000);
 
 		let timeDiff = new Date(deadline - nowDate);
 
@@ -71,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	timeCounter();
-	const timerId = setInterval(timeCounter, 1000);
 
 	// Modal
 	const openModalBtns = document.querySelectorAll('[data-modalopen]'),
@@ -167,6 +168,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	clearParent();
 
+	// const getData = async (url) => {
+	// 	const response = await fetch(url);
+
+	// 	if (response.status !== 200) {
+	// 		throw new Error(`Can't fetch ${url}, status: ${response.status}`);
+	// 	}
+
+	// 	return await response.json();
+	// };
+
+	axios.get('http://localhost:3000/menu')
+	.then(({data}) => {
+		data.forEach(({img, altimg, title, descr, price}) => {
+			new Card(
+				img,
+				altimg,
+				title,
+				descr,
+				price,
+				'.menu__field .container'
+			).render();
+		});
+	});
+
+	// getData('http://localhost:3000/menu')
+	// .then(objectMenu => {
+	// 	objectMenu.forEach(({img, altimg, title, descr, price}) => {
+	// 		new Card(
+	// 			img,
+	// 			altimg,
+	// 			title,
+	// 			descr,
+	// 			price,
+	// 			'.menu__field .container'
+	// 		).render();
+	// 	});
+	// });
+
 	// const fitnessCard = new Card('img/tabs/vegy.jpg', 'vegy', 'Меню "Фитнес"', 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 8.48, '.menu__field .container');
 	// const premiumCard = new Card('img/tabs/elite.jpg', 'elite', 'Меню “Премиум”', 'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 20.37, '.menu__field .container');
 	// const postCard = new Card('img/tabs/post.jpg', 'post', 'Меню "Постное"', 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.', 15.93, '.menu__field .container');
@@ -176,32 +215,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	// postCard.render();
 
 	// или другой синтаксис
-	new Card(
-		'img/tabs/vegy.jpg',
-		'vegy',
-		'Меню "Фитнес"',
-		'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-		8.48,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/vegy.jpg',
+	// 	'vegy',
+	// 	'Меню "Фитнес"',
+	// 	'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и	здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+	// 	8.48,
+	// 	'.menu__field .container'
+	// ).render();
 	
-	new Card(
-		'img/tabs/elite.jpg',
-		'elite',
-		'Меню “Премиум”',
-		'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-		20.37,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/elite.jpg',
+	// 	'elite',
+	// 	'Меню “Премиум”',
+	// 	'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.	Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+	// 	20.37,
+	// 	'.menu__field .container'
+	// ).render();
 
-	new Card(
-		'img/tabs/post.jpg',
-		'post',
-		'Меню "Постное"',
-		'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.',
-		15.93,
-		'.menu__field .container'
-	).render();
+	// new Card(
+	// 	'img/tabs/post.jpg',
+	// 	'post',
+	// 	'Меню "Постное"',
+	// 	'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,	молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных	вегетарианских стейков.',
+	// 	15.93,
+	// 	'.menu__field .container'
+	// ).render();
 
 	// 53. Реализация скрипта отправки данных на сервер
 	const forms = document.querySelectorAll('form');
@@ -221,7 +260,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 2000);
 	};
 
-	const sendPostData = (form) => {
+	const postData = async (url, method, body) => {
+		const response = await fetch(url, {
+			method: method,
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: body
+		});
+
+		return await response.json();
+	};
+
+	const bindPostData = (form) => {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 
@@ -233,25 +284,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			spinner.style.cssText = 'display: block; width: 40px; height: 40px; margin: 0 auto;';
 			modalWindow.querySelector('.modal__content').append(spinner);
 
-			const postData = new FormData(form);
-			const jsonObject = {};
+			const formData = new FormData(form);
+			// const jsonObject = {};
 	
-			postData.forEach((value, key) => {
-				jsonObject[key] = value;
-			});
-	
-			const jsonData = JSON.stringify(jsonObject);
-			console.log(jsonData);
+			// formData.forEach((value, key) => {
+			// 	jsonObject[key] = value;
+			// });
+			
+			// const jsonData = JSON.stringify(jsonObject);
 
-			fetch('server.php', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json'
-				},
-				body: jsonData
-			})
-			.then((jsonData) => jsonData.text())
-			.then((jsonData) => {
+			const jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
+
+			postData('http://localhost:3000/requests', 'POST', jsonData)
+			.then(jsonData => {
 				console.log(jsonData);
 				showThanksModal('Успешно отправлено!!!');
 				spinner.remove();
@@ -267,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	forms.forEach(form => {
-		sendPostData(form);
+		bindPostData(form);
 	});
 
 	// 56. Fetch API
@@ -280,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// fetch('https://jsonplaceholder.typicode.com/posts', {
 	// 	method: 'POST',
 	// 	headers: {
-	// 		'Content-type': 'application/json'
+	// 		'Content-Type': 'application/json'
 	// 	},
 	// 	body: JSON.stringify({
 	// 		name: 'Dima'
@@ -288,4 +333,189 @@ document.addEventListener('DOMContentLoaded', () => {
 	// })
 	// .then(jsonResponse => jsonResponse.json())
 	// .then(object => console.log(object));
+
+	// 61. Создаем слайдер на сайте, вариант 1
+	const prevArrow = document.querySelector('.offer__slider-prev'),
+				nextArrow = document.querySelector('.offer__slider-next'),
+				currentSlideNumber = document.querySelector('#current'),
+				totalSlideNumber = document.querySelector('#total'),
+				slides = document.querySelectorAll('.offer__slide'),
+				slidesWrapper = document.querySelector('.offer__slider-wrapper'),
+				slidesInner = document.querySelector('.offer__slider-inner');
+
+	let counter = 4;	
+
+	slidesWrapper.style.cssText = 'overflow: hidden; height: 390px; position: relative';	
+
+	const carouselIndicators = document.createElement('div');
+	carouselIndicators.classList.add('carousel-indicators');
+	slidesWrapper.append(carouselIndicators);
+
+	const sliderNav = (counter) => {
+		if (counter + 1 < 10) {
+			currentSlideNumber.innerHTML = `0${counter + 1}`;
+		} else {
+			currentSlideNumber.innerHTML = counter + 1;
+		}
+
+		if (slides.length < 10) {
+			totalSlideNumber.innerHTML = `0${slides.length}`;
+		} else {
+			totalSlideNumber.innerHTML = slides.length;
+		}
+	};
+
+	const renderSlide = (counter) => {
+		sliderNav(counter);
+
+		carouselIndicators.innerHTML = '';
+
+		slides.forEach((slide, idx) => {
+			slide.style.cssText = 'min-width: 100%';
+
+			const dot = document.createElement('div');
+			dot.classList.add('dot');
+			carouselIndicators.append(dot);
+
+			if (counter === idx) {
+				dot.classList.add('active');
+			}
+
+			dot.addEventListener('click', (event) => {
+
+				dot.classList.remove('active');
+
+				if (event.target === dot) {
+					counter = idx;
+					renderSlide(counter);
+				}
+			});
+		});		
+
+
+		slidesInner.style.cssText = `display: flex; transition: all 0.5s; transform: translate(-${counter * 100}%, 0);`;		
+	};
+
+	renderSlide(counter);
+
+	nextArrow.addEventListener('click', () => {
+		if (counter + 1 < slides.length) {
+			counter++;
+		} else {
+			counter = 0;
+		}
+		renderSlide(counter);
+	});
+
+	prevArrow.addEventListener('click', () => {
+		if (counter > 0) {
+			counter--;
+		} else {
+			counter = slides.length - 1;
+		}
+		renderSlide(counter);
+	});
+
+	// 66. Создаем калькулятор на сайте, часть 1
+	let calculatingResult = document.querySelector('.calculating__result span'),
+			sex = document.querySelector('#gender'),
+			activity = document.querySelector('#activity'),
+			height = document.querySelector('#height'),
+			weight = document.querySelector('#weight'),
+			age = document.querySelector('#age'),
+			sexValue,
+			activityValue,
+			heightValue = 160,
+			weightValue = 50,
+			ageValue = 25;
+
+	if (localStorage.getItem('sexValue')) {
+		sexValue = localStorage.getItem('sexValue');
+	} else {
+		sexValue = 'female';
+		localStorage.setItem('sexValue', sexValue);
+	}
+
+	if (localStorage.getItem('activityValue')) {
+		activityValue = localStorage.getItem('activityValue');
+	} else {
+		activityValue = 1.375;
+		localStorage.setItem('activityValue', activityValue);
+	}
+
+	const calcResult = (sexValue, height, weight, age, activityValue) => {
+		console.log(sexValue, heightValue, weightValue, ageValue, activityValue);
+
+		if (sexValue && height && weight && age && activityValue) {
+			if (sexValue === 'female') {
+				calculatingResult.innerHTML = +((447.6 + (9.2 * weightValue) + (3.1 * heightValue) - (4.3 * ageValue)) * activityValue).toFixed(0);
+			} else if ((sexValue === 'male')) {
+				calculatingResult.innerHTML = +((88.36 + (13.4 * weightValue) + (4.8 * heightValue) - (5.7 * ageValue)) * activityValue).toFixed(0);
+			}
+		}
+	};
+
+	const setActiveClass = (parentDiv) => {
+		const childItems = parentDiv.querySelectorAll('div');
+
+		childItems.forEach(item => {
+			item.classList.remove('calculating__choose-item_active');
+
+			if (item.id === localStorage.getItem('sexValue')) {
+				item.classList.add('calculating__choose-item_active');
+			}
+
+			if (item.dataset.activity === localStorage.getItem('activityValue')) {
+				item.classList.add('calculating__choose-item_active');
+			}
+		});
+	};
+
+	const getBtnData = (parentDiv) => {
+		parentDiv.addEventListener('click', (event) => {			
+			if (event.target.dataset.activity) {
+				activityValue = event.target.dataset.activity;
+				localStorage.setItem('activityValue', activityValue);			
+			} else {
+				sexValue = event.target.id;	
+				localStorage.setItem('sexValue', sexValue);
+			}
+
+			setActiveClass(parentDiv);
+			calcResult(sexValue, heightValue, weightValue, ageValue, activityValue);
+		});
+	};
+
+	const getInputData = (input) => {
+		input.addEventListener('input', (event) => {
+			if (input.value.match(/\D/g)) {
+				input.style.border = '1px solid red';
+				input.classList.remove('calculating__choose-item_active');
+			} else {
+				input.style.border = '';
+				input.classList.add('calculating__choose-item_active');
+			}
+
+			if (event.target.id === 'height') {
+				heightValue = input.value;
+			} else if (event.target.id === 'weight') {
+				weightValue = input.value;
+			} else if (event.target.id === 'age') {
+				ageValue = input.value;
+			}
+
+			calcResult(sexValue, heightValue, weightValue, ageValue, activityValue);
+		});
+
+	};
+
+	calcResult(sexValue, heightValue, weightValue, ageValue, activityValue);
+
+	setActiveClass(sex);
+	setActiveClass(activity);
+	getBtnData(sex);
+	getBtnData(activity);
+	getInputData(height);
+	getInputData(weight);
+	getInputData(age);
 });
