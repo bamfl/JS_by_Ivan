@@ -369,7 +369,8 @@ class bestUser {
 		this._age = age;
 	}
 
-	#sername = 'Petukhova';
+	// приватное св-во пишется вне конструктора
+	#sername = 'Petukhova'; 
 
 	// метод объекта
 	showUser() {
@@ -400,7 +401,7 @@ class bestUser {
 const maryana = new bestUser('Maryana', 30);
 
 // console.log(maryana.age); // undefined - если нет геттера, то нет доступа к свойству age напрямую из-за префикса _age
-console.log(maryana.age); // но при обращении с префиксом свойство доступно
+console.log(maryana._age); // но при обращении с префиксом свойство доступно
 
 console.log(maryana.age); // при создании геттера свойство age становится доступным
 maryana.age = 3; // использование сеттера, свойство age изменяется
