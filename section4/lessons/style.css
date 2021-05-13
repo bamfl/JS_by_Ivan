@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.25) 15%, rgba(0, 0, 0, 0.85) 30%, rgb(0, 0, 0) 45%);
-=======
 * {
     box-sizing: border-box;
 } 
@@ -35,4 +32,3 @@ button {
 [type=checkbox] {
     margin-top: 20px;
 }
->>>>>>> 6cbe51995424834bd85d8f432e823bd32135c617

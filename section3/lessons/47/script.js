@@ -5,6 +5,7 @@ function User(name, age) {
 	this.name = name;
 	this.age = age;
 	this.human = true;
+	
 	this.hello = function() {
 		console.log(this.name);
 	};
