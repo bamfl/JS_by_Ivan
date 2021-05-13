@@ -295,3 +295,120 @@ console.log(persone.fullName); // get
 
 persone.fullName = 'Ksenia Petukhova'; // set
 console.log(persone.fullName);
+
+// 69. Инкапсуляция - принцип ООП. 
+// Отделение и сокрытие внутренних данных программы (переменных, функций) от внешнего мира. 
+// Только методы объекта имеют доступ к его изменению.
+
+// 1. Для функций-конструкторов
+function User(name, age) {
+	this.name = name;	
+	let userAge = age; // переменная userAge недоступна вне блока, поэтому к ней нет доступа
+
+	this.showUser = function() {
+		console.log(this.name, userAge);
+	};
+
+	// делаем отдельный метод-геттер для получения свойства userAge
+	this.getAge = function() {
+		return userAge;
+	};
+
+	// делаем отдельный метод-сеттер для установки нового значения свойства userAge
+	this.setAge = function(newAge) {
+		userAge = newAge;
+	};
+}
+
+const dima = new User('Dmitriy', 26);
+
+console.log(dima.userAge); // undefined - нет доступа к свойству userAge напрямую
+dima.showUser(); // но при обращении через метод значение свойства доступно
+
+console.log(dima.getAge()); // вызываем метод-геттер для получения свойства userAge
+dima.setAge(100); // вызываем метод-сеттер для установки нового значения свойства userAge
+console.log(dima.getAge()); // вызываем метод-геттер для получения свойства userAge
+
+// 2.1 Для классов с префиксом (лодаш)
+class topUser {
+	constructor(name, age) {
+		this.name = name;
+		this._age = age;
+	}
+
+	// метод объекта
+	showUser() {
+		console.log(this.name, this._age);
+	}
+
+	// создание геттера, свойство age становится доступным
+	get age() {
+		return this._age;
+	}
+
+	// создание сеттера, свойство age становится изменяемым
+	set age(newAge) {
+		this._age = newAge;
+	}
+}
+
+const ksenia = new topUser('Ksenia', 30);
+
+// console.log(ksenia.age); // undefined - если нет геттера, то нет доступа к свойству age напрямую из-за префикса _age
+console.log(ksenia._age); // но при обращении с префиксом свойство доступно
+
+console.log(ksenia.age); // при создании геттера свойство age становится доступным
+ksenia.age = 50; // использование сеттера, свойство age изменяется
+
+ksenia.showUser();
+
+// 2.2 Для классов с полями классов (#)
+class bestUser {
+	constructor(name, age) {
+		this.name = name;
+		this._age = age;
+	}
+
+	#sername = 'Petukhova';
+
+	// метод объекта
+	showUser() {
+		console.log(this.name, this.#sername, this._age);
+	}
+
+	// создание геттера, свойство age становится доступным
+	get age() {
+		return this._age;
+	}
+
+	// создание сеттера, свойство age становится изменяемым
+	set age(newAge) {
+		this._age = newAge;
+	}
+
+	// создание геттера приватному свойству #sername, оно становится доступным
+	get sername() {
+		return this.#sername;
+	}
+
+	// создание cеттера приватному свойству #sername, можно поменять значение
+	set sername(newSername) {
+		this.#sername = newSername;
+	}
+}
+
+const maryana = new bestUser('Maryana', 30);
+
+// console.log(maryana.age); // undefined - если нет геттера, то нет доступа к свойству age напрямую из-за префикса _age
+console.log(maryana.age); // но при обращении с префиксом свойство доступно
+
+console.log(maryana.age); // при создании геттера свойство age становится доступным
+maryana.age = 3; // использование сеттера, свойство age изменяется
+
+console.log(maryana.sername); // undefined, нужно создать геттер
+// console.log(maryana.#sername); // приватное свойство не может быть доступно, нужно создать геттер
+
+console.log(maryana.sername); // при создании геттера свойство #sername становится доступным
+maryana.sername = 'Kolganova'; // // использование сеттера, свойство #sername изменяется
+
+maryana.showUser();
