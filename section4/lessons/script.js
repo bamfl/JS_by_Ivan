@@ -278,20 +278,103 @@
 // /\S/ - ищем не пробелы
 
 // 68. Геттеры и сеттеры (свойства объектов)
-const persone = {
-	name: 'Dmitriy',
-	sername: 'Petukhov',
+// const persone = {
+// 	name: 'Dmitriy',
+// 	sername: 'Petukhov',
 
-	get fullName() {
-		return `${this.name} ${this.sername}`;
-	},
+// 	get fullName() {
+// 		return `${this.name} ${this.sername}`;
+// 	},
 
-	set fullName(value) {
-		[this.name, this.sername] = value.split(' ');
+// 	set fullName(value) {
+// 		[this.name, this.sername] = value.split(' ');
+// 	}
+// };
+
+// console.log(persone.fullName); // get
+
+// persone.fullName = 'Ksenia Petukhova'; // set
+// console.log(persone.fullName);
+
+// 69. Инкапсуляция
+// function User(name, age) {
+// 	this.name = name;
+// 	// this.age = age;
+// 	let userAge = age;
+
+// 	this.say = function() {
+// 		console.log(this.name, userAge);
+// 	};
+
+// 	this.getAge = function() {
+// 		return userAge;
+// 	};
+
+// 	this.setAge = function(value) {
+// 		if (typeof value === 'number') {
+// 			userAge = value;
+// 		} else {
+// 			console.log('Не число');
+// 		}
+// 	};
+// }
+
+// const dima = new User('Dima', 26);
+// dima.name = 'Ksenia';
+// dima.userAge = 30;
+
+// dima.say();
+
+// dima.setAge(55);
+// console.log(dima.getAge());
+
+// function User(name, age) {
+// 	this.name = name;
+// 	// this.age = age;
+// 	let userAge = age;
+
+// 	this.say = function() {
+// 		console.log(this.name, userAge);
+// 	};
+
+// 	this.getAge = function() {
+// 		return userAge;
+// 	};
+
+// 	this.setAge = function(value) {
+// 		if (typeof value === 'number') {
+// 			userAge = value;
+// 		} else {
+// 			console.log('Не число');
+// 		}
+// 	};
+// }
+
+class User {
+	constructor(name, age) {
+		this.name = name;
+		this._userAge = age;
 	}
-};
 
-console.log(persone.fullName); // get
+	say() {
+		console.log(this.name, this._userAge);
+	}
 
-persone.fullName = 'Ksenia Petukhova'; // set
-console.log(persone.fullName);
+	get age() {
+		return this._userAge;
+	}
+
+	set age(value) {
+		if (typeof value === 'number') {
+			this._userAge = value;
+		} else {
+			console.log('Не число');
+		}
+	}
+}
+
+const dima = new User('Dima', 26);
+dima.name = 'Ksenia';
+dima.age = 30;
+
+dima.say();
