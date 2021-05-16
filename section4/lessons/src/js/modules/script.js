@@ -493,31 +493,33 @@ dima.say();
 // maryana.showUser();
 
 // 70. Прием модуль, как и зачем его использовать
-const app = 60; // ошибка - в lib.js уже была объявлена переменная app
+// const app = 60; // ошибка - в lib.js уже была объявлена переменная app
 
-// Способы создания модулей (смотри использование в lib.js):
+// // Способы создания модулей (смотри использование в lib.js):
 
-// 1. Использовать анонимную самовызывающуюся функцию
-const num = 1;
+// // 1. Использовать анонимную самовызывающуюся функцию
+// const num = 1;
 
-// Анонимная самовызывающаяся функция
-(function() {
-	let num = 10;
-	console.log(num);
-	console.log(num + 10);
-}());
+// // Анонимная самовызывающаяся функция
+// (function() {
+// 	let num = 10;
+// 	console.log(num);
+// 	console.log(num + 10);
+// }());
 
-console.log(num);
+// console.log(num);
 
-// 2. Использование объектного интерфейса
-const user = (function(){
-	const privat = function() {
-		console.log('I am privat');
-	};
+// // 2. Использование объектного интерфейса
+// const user = (function(){
+// 	const privat = function() {
+// 		console.log('I am privat');
+// 	};
 
-	return {
-		sayHello: privat
-	};
-}());
+// 	return {
+// 		sayHello: privat
+// 	};
+// }());
 
-user.sayHello();
+// user.sayHello();
+
+// 71. Webpack. Собираем наш проект
