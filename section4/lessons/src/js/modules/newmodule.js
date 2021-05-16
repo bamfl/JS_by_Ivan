@@ -1,5 +1,3 @@
-function newModule() {
+export default function newModule() {
 	console.log('Module');
 }
-
-module.exports = newModule;

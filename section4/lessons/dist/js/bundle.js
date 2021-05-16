@@ -1,12 +1,31 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/modules/module.js":
-/*!**********************************!*\
-  !*** ./src/js/modules/module.js ***!
-  \**********************************/
-/***/ ((module) => {
+/***/ "./src/js/modules/mymodule.js":
+/*!************************************!*\
+  !*** ./src/js/modules/mymodule.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "one": () => (/* binding */ one),
+/* harmony export */   "two": () => (/* binding */ two),
+/* harmony export */   "hello": () => (/* binding */ hello),
+/* harmony export */   "default": () => (/* binding */ myModule)
+/* harmony export */ });
+// Обычных export может быть сколько угодно
+let one = 1; // экспорт переменной
+
+let two = 2;
+ // именованный экспорт переменной
+
+function hello() {
+	console.log('Hello');
+}
+
+// export default может быть только один
 function myModule() {
 	this.hello = function() {
 		console.log("Hello!");
@@ -17,8 +36,6 @@ function myModule() {
 	};
 }
 
-module.exports = myModule;
-
 
 /***/ }),
 
@@ -26,13 +43,16 @@ module.exports = myModule;
 /*!*************************************!*\
   !*** ./src/js/modules/newmodule.js ***!
   \*************************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ newModule)
+/* harmony export */ });
 function newModule() {
 	console.log('Module');
 }
 
-module.exports = newModule;
 
 /***/ })
 
@@ -63,20 +83,65 @@ module.exports = newModule;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-const myModule = __webpack_require__(/*! ./modules/module */ "./src/js/modules/module.js"),
-			newModule = __webpack_require__(/*! ./modules/newmodule */ "./src/js/modules/newmodule.js");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_mymodule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/mymodule */ "./src/js/modules/mymodule.js");
+/* harmony import */ var _modules_newmodule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/newmodule */ "./src/js/modules/newmodule.js");
+// import {default as myModule} from './modules/mymodule'; // Явная запись import default as myModule (синтаксис переименования) изнутри
+ // Но используется сокращенная запись import default
 
-const myModuleInstance = new myModule();
+
+ // import всего, как объекта data, из модуля
+_modules_mymodule__WEBPACK_IMPORTED_MODULE_0__.hello();
+
+
+const myModuleInstance = new _modules_mymodule__WEBPACK_IMPORTED_MODULE_0__.default();
 myModuleInstance.hello();
 myModuleInstance.goodbye();
 
-newModule();
+
+
+(0,_modules_newmodule__WEBPACK_IMPORTED_MODULE_1__.default)();
+
+
+ // деструктуризация объекта
+console.log(_modules_mymodule__WEBPACK_IMPORTED_MODULE_0__.one, _modules_mymodule__WEBPACK_IMPORTED_MODULE_0__.two);
+(0,_modules_mymodule__WEBPACK_IMPORTED_MODULE_0__.hello)();
+
 })();
 
 /******/ })()
