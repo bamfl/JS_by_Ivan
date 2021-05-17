@@ -39,4 +39,4 @@ function counter() {
 	timeCounter();
 }
 
-module.exports = counter;
+export default counter;

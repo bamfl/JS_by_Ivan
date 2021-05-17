@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-	const calculator = require('./modules/calculator'),
-				card = require('./modules/card'),
-				counter = require('./modules/counter'),
-				form = require('./modules/form'),
-				modal = require('./modules/modal'),
-				slider = require('./modules/slider'),
-				tabs = require('./modules/tabs');
+import calculator from './ frommodules/calculator';
+import card from './modules/card';
+import counter from './ frommodules/counter';
+import form from './modules/form';
+import modal from './modules/modal';
+import slider from './modules/slider';
+import tabs from './modules/tabs';
 
+document.addEventListener('DOMContentLoaded', () => {
 	calculator();
 	card();
 	counter();

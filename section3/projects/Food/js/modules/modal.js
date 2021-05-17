@@ -1,19 +1,19 @@
+const modalWindow = document.querySelector('.modal');
+const closeActions = () => {
+	document.body.style.cssText = 'overflow: ""; width: ""';
+	modalWindow.style.display = 'none';
+};
+
 function modal() {
 	// Modal
 	const openModalBtns = document.querySelectorAll('[data-modalopen]'),
-				closeModalBtn = document.querySelector('[data-modalclose]'),
-				modalWindow = document.querySelector('.modal');
+				closeModalBtn = document.querySelector('[data-modalclose]');
 
 	const openActions = () => {
 		document.body.style.cssText = 'overflow: hidden; width: 100%;';
 		modalWindow.style.display = 'block';
 		clearInterval(modalTimerId);
 	};	
-
-	const closeActions = () => {
-		document.body.style.cssText = 'overflow: ""; width: ""';
-		modalWindow.style.display = 'none';
-	};
 
 	openModalBtns.forEach((btn) => {
 		btn.addEventListener('click', openActions);
@@ -46,4 +46,5 @@ function modal() {
 	document.addEventListener('scroll', scrollModalOpen);
 }
 
-module.exports = modal;
+export default modal;
+export {modalWindow, closeActions};

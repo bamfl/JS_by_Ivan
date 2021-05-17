@@ -122,4 +122,4 @@ function card() {
 	// ).render();
 }
 
-module.exports = card;
+export default card;

@@ -1,3 +1,5 @@
+import {modalWindow, closeActions} from './modal';
+
 function form() {
 	// 53. Реализация скрипта отправки данных на сервер
 	const forms = document.querySelectorAll('form');
@@ -73,4 +75,4 @@ function form() {
 	});
 }
 
-module.exports = form;
+export default form;
