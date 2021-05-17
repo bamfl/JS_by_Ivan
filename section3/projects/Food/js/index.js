@@ -1,6 +1,6 @@
-import calculator from './ frommodules/calculator';
+import calculator from './modules/calculator';
 import card from './modules/card';
-import counter from './ frommodules/counter';
+import counter from './modules/counter';
 import form from './modules/form';
 import modal from './modules/modal';
 import slider from './modules/slider';
