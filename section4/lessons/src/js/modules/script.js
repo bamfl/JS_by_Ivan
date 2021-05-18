@@ -364,34 +364,34 @@
 // 	};
 // }
 
-class User {
-	constructor(name, age) {
-		this.name = name;
-		this._userAge = age;
-	}
+// class User {
+// 	constructor(name, age) {
+// 		this.name = name;
+// 		this._userAge = age;
+// 	}
 
-	say() {
-		console.log(this.name, this._userAge);
-	}
+// 	say() {
+// 		console.log(this.name, this._userAge);
+// 	}
 
-	get age() {
-		return this._userAge;
-	}
+// 	get age() {
+// 		return this._userAge;
+// 	}
 
-	set age(value) {
-		if (typeof value === 'number') {
-			this._userAge = value;
-		} else {
-			console.log('Не число');
-		}
-	}
-}
+// 	set age(value) {
+// 		if (typeof value === 'number') {
+// 			this._userAge = value;
+// 		} else {
+// 			console.log('Не число');
+// 		}
+// 	}
+// }
 
-const dima = new User('Dima', 26);
-dima.name = 'Ksenia';
-dima.age = 30;
+// const dima = new User('Dima', 26);
+// dima.name = 'Ksenia';
+// dima.age = 30;
 
-dima.say();
+// dima.say();
 // 	// делаем отдельный метод-сеттер для установки нового значения свойства userAge
 // 	this.setAge = function(newAge) {
 // 		userAge = newAge;
@@ -523,3 +523,15 @@ dima.say();
 // user.sayHello();
 
 // 71. Webpack. Собираем наш проект
+
+// 75. Ошибки. Как избежать “поломки” своего кода
+try {
+	const btn = document.queryselector('.mybtn');
+	console.log(btn);
+} catch(error) {
+	console.error(error, 'Выполняется при ошибке');
+} finally {
+	console.log('Finally всегда выполняется');
+}
+
+console.log('Далее код выполняется, а не останавливается');
