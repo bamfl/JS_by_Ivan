@@ -29,7 +29,7 @@
 
 // 	// Методы объекта XMLHttpRequest
 // 	request.open('GET', 'current.json'); // (method. url, async(default = true), login, password)
-// 	request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+// 	request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 // 	request.send();
 
 // 	// Свойства объекта XMLHttpRequest: (status, statusText, response, readyState и др.)
@@ -537,31 +537,97 @@
 // console.log('Далее код выполняется, а не останавливается');
 
 // 79. Функции-генераторы
-function* generator() {
-	// yield - давать
-	yield 1;
-	yield 2;
-	yield 3;
-}
+// function* generator() {
+// 	// yield - давать
+// 	yield 1;
+// 	yield 2;
+// 	yield 3;
+// }
 
-const gen = generator();
+// const gen = generator();
 
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
 
-function* count(n) {
-	for (let i = 0; i < n; i++) {
-		yield i;
-	}
-}
+// function* count(n) {
+// 	for (let i = 0; i < n; i++) {
+// 		yield i;
+// 	}
+// }
 
-const counter = count(7);
-console.log(counter.next().value);
-console.log(counter.next().value);
-console.log(counter.next().value);
+// const counter = count(7);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
 
-for (let k of count(7)) {
-	console.log(k);
-}
+// for (let k of count(7)) {
+// 	console.log(k);
+// }
+
+const num = [1, 10, 100, '1000'];
+
+// const bigNum = num.filter(num => num >= 100);
+
+// console.log(bigNum);
+
+// Метод filter
+const filter = (arr, condition) => {
+	let newArr = [];
+
+	arr.forEach(item => {
+		if (condition(item)) {
+			newArr.push(item);
+		}
+	});
+
+	return newArr;
+};
+
+const filteredArr = filter(num, item => item >= 100);
+console.log(filteredArr);
+
+// // Метод map
+const map = (arr, func) => {
+	const newArr = [];
+
+	arr.forEach((item, idx) => {
+		newArr[idx] = func(item);
+	});
+
+	return newArr;
+};
+
+const mappedArr = map(num, item => item + 5);
+console.log(mappedArr);
+
+// Метод some
+const some = (arr, condition) => {
+	let status = false;
+
+	arr.forEach(item => {
+		if (condition(item)) {
+			status = true;
+		}
+	});
+
+	return status;
+};
+
+console.log(some(num, item => typeof item === 'number'));
+
+// Метод every
+const every = (arr, condition) => {
+	let status = true;
+
+	arr.forEach(item => {
+		if (!condition(item)) {
+			status = false;
+		}
+	});
+
+	return status;
+};
+
+console.log(every(num, item => typeof item === 'number'));
