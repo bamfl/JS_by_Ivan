@@ -29,7 +29,7 @@
 
 // 	// Методы объекта XMLHttpRequest
 // 	request.open('GET', 'current.json'); // (method. url, async(default = true), login, password)
-// 	request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+// 	request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 // 	request.send();
 
 // 	// Свойства объекта XMLHttpRequest: (status, statusText, response, readyState и др.)
@@ -566,4 +566,3 @@
 // 	console.log(k);
 // }
 
-console.log('f'*0);
