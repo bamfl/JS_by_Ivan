@@ -537,31 +537,33 @@
 // console.log('Далее код выполняется, а не останавливается');
 
 // 79. Функции-генераторы
-function* generator() {
-	// yield - давать
-	yield 1;
-	yield 2;
-	yield 3;
-}
+// function* generator() {
+// 	// yield - давать
+// 	yield 1;
+// 	yield 2;
+// 	yield 3;
+// }
 
-const gen = generator();
+// const gen = generator();
 
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
-console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
+// console.log(gen.next().value);
 
-function* count(n) {
-	for (let i = 0; i < n; i++) {
-		yield i;
-	}
-}
+// function* count(n) {
+// 	for (let i = 0; i < n; i++) {
+// 		yield i;
+// 	}
+// }
 
-const counter = count(7);
-console.log(counter.next().value);
-console.log(counter.next().value);
-console.log(counter.next().value);
+// const counter = count(7);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
 
-for (let k of count(7)) {
-	console.log(k);
-}
+// for (let k of count(7)) {
+// 	console.log(k);
+// }
+
+console.log('f'*0);
