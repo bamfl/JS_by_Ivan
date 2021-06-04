@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "browserslist": [
-    "> 1%",
+    "> 0.8%",
     "not dead"
   ],
   "devDependencies": {
