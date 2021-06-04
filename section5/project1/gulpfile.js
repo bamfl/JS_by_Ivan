@@ -78,7 +78,7 @@ gulp.task('build-prod-js', () => {
       webpack({
         mode: 'production',
         output: {
-          filename: 'script.js',
+          filename: 'bundle.js',
         },
         module: {
           rules: [
