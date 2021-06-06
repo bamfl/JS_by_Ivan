@@ -3110,12 +3110,53 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
+/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
+
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_3__["default"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/calc.js":
+/*!********************************!*\
+  !*** ./src/js/modules/calc.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.match */ "./node_modules/core-js/modules/es.string.match.js");
+/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function calc() {
+  var nextBtn = document.querySelector('.popup_calc .popup_calc_button'),
+      widthInput = document.getElementById('width'),
+      heightInput = document.getElementById('height');
+  var balconWidth = 0,
+      balconHeight = 0;
+  nextBtn.addEventListener('click', function () {
+    if (widthInput.value.match(/\d/) && heightInput.value.match(/\d/)) {
+      balconHeight = heightInput.value;
+      balconWidth = widthInput.value;
+      console.log(balconWidth, balconHeight);
+    }
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (calc);
 
 /***/ }),
 
@@ -3183,7 +3224,7 @@ function forms() {
   };
 
   document.querySelectorAll('form').forEach(function (form) {
-    postForm(form);
+    return postForm(form);
   });
 }
 
@@ -3229,9 +3270,64 @@ function modals() {
   closePopup('.popup_engineer');
   openPopup('.phone_link', '.popup');
   closePopup('.popup');
+  openPopup('.popup_calc_btn', '.popup_calc');
+  closePopup('.popup_calc');
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
+
+/***/ }),
+
+/***/ "./src/js/modules/tabs.js":
+/*!********************************!*\
+  !*** ./src/js/modules/tabs.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function tabs() {
+  var setActiveTab = function setActiveTab(tabsSelector, tabSelector, tabsContentSelector, activeClass) {
+    document.querySelector(tabsSelector).addEventListener('click', function (event) {
+      if (event.target.parentElement.matches(tabSelector)) {
+        document.querySelectorAll(tabSelector).forEach(function (item) {
+          return item.classList.remove(activeClass);
+        });
+        event.target.parentElement.classList.add(activeClass);
+        showActiveTabContent(tabsContentSelector, event.target.parentElement.dataset.tab, activeClass);
+      } else if (event.target.matches(tabSelector)) {
+        document.querySelectorAll(tabSelector).forEach(function (item) {
+          return item.classList.remove(activeClass);
+        });
+        event.target.classList.add(activeClass);
+        showActiveTabContent(tabsContentSelector, event.target.dataset.tab, activeClass);
+      }
+    });
+  };
+
+  var showActiveTabContent = function showActiveTabContent(tabsContentSelector, tabContentSelector, activeClass) {
+    document.querySelectorAll(tabsContentSelector).forEach(function (tab) {
+      tab.classList.remove(activeClass);
+
+      if (tab.classList.contains(tabContentSelector)) {
+        tab.classList.add(activeClass);
+      }
+    });
+  };
+
+  setActiveTab('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
+  setActiveTab('.balcon_icons', '.balcon_icons_img', '.balcon_content', 'do_image_more');
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (tabs);
 
 /***/ })
 

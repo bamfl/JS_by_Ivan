@@ -21,6 +21,9 @@ function modals() {
 
 	openPopup('.phone_link', '.popup');
 	closePopup('.popup');
+
+	openPopup('.popup_calc_btn', '.popup_calc');
+	closePopup('.popup_calc');
 }
 
 export default modals;

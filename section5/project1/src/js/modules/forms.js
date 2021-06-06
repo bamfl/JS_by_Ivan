@@ -36,9 +36,7 @@ function forms() {
 		});
 	};
 
-	document.querySelectorAll('form').forEach(form => {
-		postForm(form);
-	});
+	document.querySelectorAll('form').forEach(form => postForm(form));
 }
 
 export default forms;

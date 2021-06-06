@@ -366,8 +366,15 @@ textarea:focus {
   padding: 8rem 0;
 }
 
+.glazing_slider {
+	display: flex;
+	justify-content: space-around;
+}
+
 .glazing_block {
   display: inline-block;
+  cursor: pointer;
+
 }
 
 .glazing_block img {
@@ -386,8 +393,14 @@ textarea:focus {
 			}*/
 }
 
+.glazing_block.active a {
+	text-decoration: none;
+  color: #454545;
+}
+
 .glazing_block a:hover {
   cursor: pointer;
+	text-decoration: none;
 }
 
 .glazing_cold {
@@ -479,16 +492,12 @@ textarea:focus {
   padding: 2rem 2rem;
 }
 
-.glazing .aluminum,
-.glazing .plastic,
-.glazing .french,
-.glazing .rise {
+.glazing_content {
   display: none;
 }
 
-.glazing a.active {
-  text-decoration: none;
-  color: #454545;
+.glazing_content.active {
+	display: block;
 }
 
 /*Decoration*/
@@ -931,6 +940,15 @@ textarea:focus {
   display: none;
   margin-bottom: 3rem;
   width: 30rem;
+}
+
+.popup_calc_content .big_img .balcon_content {
+  display: none;
+}
+
+.popup_calc_content .big_img .balcon_content.do_image_more {
+  display: block;
+	margin: 20px auto;
 }
 
 .popup_calc_content #type1 {
