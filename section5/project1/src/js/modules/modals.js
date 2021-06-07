@@ -24,6 +24,10 @@ function modals() {
 
 	openPopup('.popup_calc_btn', '.popup_calc');
 	closePopup('.popup_calc');
+
+	closePopup('.popup_calc_profile');
+	
+	closePopup('.popup_calc_end');
 }
 
 export default modals;

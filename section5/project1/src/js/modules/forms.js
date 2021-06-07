@@ -1,3 +1,5 @@
+import {balconForm,	balconWidthValue,	balconHeightValue, viewTypeValue, checboxValue} from './calc';
+
 function forms() {
 	const postForm = (form) => {
 		form.addEventListener('submit', (event) => {
@@ -8,6 +10,14 @@ function forms() {
 			form.append(messageDiv);
 
 			const formData = new FormData(form);
+			
+			if (balconForm && balconWidthValue && balconHeightValue && viewTypeValue && checboxValue) {
+				formData.append('balconForm', balconForm);
+				formData.append('balconWidthValue',	balconWidthValue);
+				formData.append('balconHeightValue',	balconHeightValue);
+				formData.append('viewTypeValue', viewTypeValue);
+				formData.append('checboxValue', checboxValue);
+			}
 
 			if (form[1].value.match(/\d/)) {
 				fetch('./assets/server.php', {
