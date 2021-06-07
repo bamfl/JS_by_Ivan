@@ -506,6 +506,11 @@ textarea:focus {
   background-color: #f7f7f7;
 }
 
+.decoration_slider {
+	display: flex;
+	justify-content: space-between;
+}
+
 .decoration_item {
   text-align: center;
 }

@@ -3372,6 +3372,7 @@ function tabs() {
 
   setActiveTab('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
   setActiveTab('.balcon_icons', '.balcon_icons_img', '.balcon_content', 'do_image_more');
+  setActiveTab('.decoration_slider', '.decoration_item', '.decoration_content .row');
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);
