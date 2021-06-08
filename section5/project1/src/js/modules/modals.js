@@ -1,9 +1,15 @@
 function modals() {
+	const openPopupAction = (popupSelector) => {
+		document.querySelector(popupSelector).style.cssText = 'display: block';
+
+		clearTimeout(timerId);
+	};
+
 	const openPopup = (btnSelector, popupSelector) => {
 		document.querySelectorAll(btnSelector).forEach(btn => {
 			btn.addEventListener('click', (event) => {
 				event.preventDefault();
-				document.querySelector(popupSelector).style.cssText = 'display: block';
+				openPopupAction(popupSelector);
 			});
 		});
 	};
@@ -15,6 +21,8 @@ function modals() {
 			}
 		});
 	};
+
+	const timerId = setTimeout(() => openPopupAction('.popup'), 60000);
 
 	openPopup('.popup_engineer_btn', '.popup_engineer');
 	closePopup('.popup_engineer');

@@ -3,6 +3,7 @@ import forms from './modules/forms';
 import tabs from './modules/tabs';
 import calc from './modules/calc';
 import timer from './modules/timer';
+import gallery from './modules/gallery';
 
 document.addEventListener('DOMContentLoaded', () => {
 	modals();
@@ -10,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	tabs();
 	calc();
 	timer();
+	gallery();
 });
