@@ -14553,16 +14553,97 @@ function timer() {
 
 /***/ }),
 
+/***/ "./src/js/slider.js":
+/*!**************************!*\
+  !*** ./src/js/slider.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.glazing_slider').slick({
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [{
+      breakpoint: 1201,
+      settings: {
+        slidesToShow: 4,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 2
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 2
+      }
+    }, {
+      breakpoint: 530,
+      settings: {
+        slidesToShow: 1,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 1
+      }
+    }]
+  });
+  $('.decoration_slider').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 2
+      }
+    }, {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        prevArrow: '<button class="prev arrow"></button>',
+        nextArrow: '<button class="next arrow"></button>',
+        slidesToScroll: 1
+      }
+    }]
+  });
+});
+
+/***/ }),
+
 /***/ 0:
-/*!************************************************************************************************************************!*\
-  !*** multi ./src/js/main.js ./node_modules/jquery/dist/jquery.min.js ./node_modules/slick-carousel/slick/slick.min.js ***!
-  \************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** multi ./src/js/main.js ./node_modules/jquery/dist/jquery.min.js ./node_modules/slick-carousel/slick/slick.min.js ./src/js/slider.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\User-ProfitClicks\Dmitriy_Petukhov\#IT\js_udemy\JS_by_Ivan\section5\project1\src\js\main.js */"./src/js/main.js");
 __webpack_require__(/*! C:\Users\User-ProfitClicks\Dmitriy_Petukhov\#IT\js_udemy\JS_by_Ivan\section5\project1\node_modules\jquery\dist\jquery.min.js */"./node_modules/jquery/dist/jquery.min.js");
-module.exports = __webpack_require__(/*! C:\Users\User-ProfitClicks\Dmitriy_Petukhov\#IT\js_udemy\JS_by_Ivan\section5\project1\node_modules\slick-carousel\slick\slick.min.js */"./node_modules/slick-carousel/slick/slick.min.js");
+__webpack_require__(/*! C:\Users\User-ProfitClicks\Dmitriy_Petukhov\#IT\js_udemy\JS_by_Ivan\section5\project1\node_modules\slick-carousel\slick\slick.min.js */"./node_modules/slick-carousel/slick/slick.min.js");
+module.exports = __webpack_require__(/*! C:\Users\User-ProfitClicks\Dmitriy_Petukhov\#IT\js_udemy\JS_by_Ivan\section5\project1\src\js\slider.js */"./src/js/slider.js");
 
 
 /***/ })
