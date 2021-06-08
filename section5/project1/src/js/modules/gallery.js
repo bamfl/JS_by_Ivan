@@ -25,7 +25,7 @@ function gallery() {
 
 	const closeActiveItem = (bgSelector) => {
 		document.querySelector(bgSelector).addEventListener('click', () => {
-			document.body.style.cssText = 'overflow: visible';
+			document.body.style.cssText = '';
 			document.querySelector(bgSelector).remove();
 			document.querySelector(bgSelector).nextElementSibling.classList.remove('active');
 		});
