@@ -1,34 +1,34 @@
-function tabs() {
-	const setActiveTab = (tabsSelector, tabSelector, tabsContentSelector, activeClass) => {
+const tabs = () => {
+	const setActiveTab = (tabsSelector, tabSelector, tabsContentSelector, activeClassSelector) => {
 		document.querySelector(tabsSelector).addEventListener('click', (event) => {
 			if (event.target.parentElement.matches(tabSelector)) {
-				document.querySelectorAll(tabSelector).forEach(item => item.classList.remove(activeClass));
-				event.target.parentElement.classList.add(activeClass);
-				showActiveTabContent(tabsContentSelector, event.target.parentElement.dataset.tab, activeClass);
+				document.querySelectorAll(tabSelector).forEach(item => item.classList.remove(activeClassSelector.slice(1)));
+				event.target.parentElement.classList.add(activeClassSelector.slice(1));
+				showActiveTabContent(tabsContentSelector, event.target.parentElement.dataset.tab, activeClassSelector);
 
 			} else if (event.target.matches(tabSelector)) {
-				document.querySelectorAll(tabSelector).forEach(item => item.classList.remove(activeClass));
-				event.target.classList.add(activeClass);
-				showActiveTabContent(tabsContentSelector, event.target.dataset.tab, activeClass);
+				document.querySelectorAll(tabSelector).forEach(item => item.classList.remove(activeClassSelector.slice(1)));
+				event.target.classList.add(activeClassSelector.slice(1));
+				showActiveTabContent(tabsContentSelector, event.target.dataset.tab, activeClassSelector);
 			}			
 		});
 	};
 
-	const showActiveTabContent = (tabsContentSelector, tabContentSelector, activeClass) => {
+	const showActiveTabContent = (tabsContentSelector, tabContentSelector, activeClassSelector) => {
 		document.querySelectorAll(tabsContentSelector).forEach(tab => {
-			tab.classList.remove(activeClass);
+			tab.classList.remove(activeClassSelector.slice(1));
 
 			if (tab.classList.contains(tabContentSelector)) {
-				tab.classList.add(activeClass);
+				tab.classList.add(activeClassSelector.slice(1));
 			}
 		});
 	};
 
-	setActiveTab('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
+	setActiveTab('.glazing_slider', '.glazing_block', '.glazing_content', '.active');
 
-	setActiveTab('.balcon_icons', '.balcon_icons_img', '.balcon_content', 'do_image_more');
+	setActiveTab('.balcon_icons', '.balcon_icons_img', '.balcon_content', '.do_image_more');
 
-	setActiveTab('.decoration_slider', '.decoration_item', '.decoration_content', 'active');
-}
+	setActiveTab('.decoration_slider', '.decoration_item', '.decoration_content', '.active');
+};
 
 export default tabs;

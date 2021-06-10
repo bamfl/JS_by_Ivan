@@ -4,6 +4,7 @@ import tabs from './modules/tabs';
 import calc from './modules/calc';
 import timer from './modules/timer';
 import gallery from './modules/gallery';
+import slider from './modules/slider';
 
 document.addEventListener('DOMContentLoaded', () => {
 	modals();
@@ -12,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	calc();
 	timer();
 	gallery();
+	slider();
 });

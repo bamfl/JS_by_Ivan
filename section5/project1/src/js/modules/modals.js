@@ -1,4 +1,4 @@
-function modals() {
+const modals = () => {
 	const openPopupAction = (popupSelector) => {
 		document.querySelector(popupSelector).style.cssText = 'display: block';
 
@@ -10,6 +10,7 @@ function modals() {
 			btn.addEventListener('click', (event) => {
 				event.preventDefault();
 				openPopupAction(popupSelector);
+				document.body.style.cssText = 'overflow: hidden';
 			});
 		});
 	};
@@ -18,6 +19,7 @@ function modals() {
 		document.querySelector(popupSelector).addEventListener('click', (event) => {
 			if (event.target.matches('strong') || event.target.matches(popupSelector)) {
 				document.querySelector(popupSelector).style.cssText = 'display: none';
+				document.body.style.cssText = '';
 			}
 		});
 	};
@@ -36,6 +38,6 @@ function modals() {
 	closePopup('.popup_calc_profile');
 	
 	closePopup('.popup_calc_end');
-}
+};
 
 export default modals;
