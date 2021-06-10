@@ -10,7 +10,7 @@ function counter() {
 	
 	const timeCounter = () => {
 		const nowDate = new Date();
-		const timerId = setInterval(timeCounter, 100000);
+		const timerId = setInterval(() => timeCounter(), 1000);
 
 		let timeDiff = new Date(deadline - nowDate);
 
