@@ -1,4 +1,4 @@
-function timer() {
+const timer = () => {
 	const days = document.getElementById('days'),
 				hours = document.getElementById('hours'),
 				minutes = document.getElementById('minutes'),
@@ -34,6 +34,6 @@ function timer() {
 	};
 
 	timeCounter(days, hours, minutes, seconds);
-}
+};
 
 export default timer;

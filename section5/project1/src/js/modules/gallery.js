@@ -1,4 +1,4 @@
-function gallery() {
+const gallery = () => {
 	const setActiveItem = (itemsSelector, itemSelector) => {
 		document.querySelector(itemsSelector).addEventListener('click', (event) => {
 			document.body.style.cssText = 'overflow: hidden';
@@ -25,13 +25,13 @@ function gallery() {
 
 	const closeActiveItem = (bgSelector) => {
 		document.querySelector(bgSelector).addEventListener('click', () => {
-			document.body.style.cssText = '';
+			document.body.style.cssText = 'overflow: visible';
 			document.querySelector(bgSelector).remove();
 			document.querySelector(bgSelector).nextElementSibling.classList.remove('active');
 		});
 	};
 
 	setActiveItem('.previews', '.preview');
-}
+};
 
 export default gallery;

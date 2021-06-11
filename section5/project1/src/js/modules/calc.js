@@ -4,7 +4,7 @@ let balconForm,
 		viewTypeValue,
 		checboxValue;	
 
-function calc() {
+const calc = () => {
 	const nextBtn1 = document.querySelector('.popup_calc .popup_calc_button'),
 				nextBtn2 = document.querySelector('.popup_calc_profile_button'),
 				widthInput = document.getElementById('width'),
@@ -45,7 +45,7 @@ function calc() {
 			});
 		}
 	});	
-}
+};
 
 export {balconForm,	balconWidthValue,	balconHeightValue, viewTypeValue, checboxValue};
 export default calc;
